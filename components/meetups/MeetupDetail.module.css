@@ -1,0 +1,97 @@
+.detail {
+  text-align: center;
+  background-color: antiquewhite;
+}
+
+.detail img {
+  width: 100%;
+}
+
+.detail h4{
+  text-align: center;
+}
+
+.flexContentB button {
+  font: inherit;
+  cursor: pointer;
+  color: #1b3a1a;
+  border: 1px solid #1b3a1a;
+  background-color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.flexContentB{
+  background-color: #9e9e9e;
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.flexContainerB {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 5px;
+  background-color: rgb(255, 175, 175);
+}
+
+.flexContent button:hover,
+.flexContent button:active {
+  background-color: #518F51;
+}
+
+.flexContainerHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 5px;
+  border-style: solid;
+  background-color: white;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-style: solid;
+  margin: 5px;
+  background-color: rgb(255, 175, 175);
+}
+
+.flexContent{
+  background-color: #c4c0ffd3;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.flexImg{
+  width: 70%;
+  margin: 5px;
+}
+
+.flexDesc{
+  background-color: #beffccde;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 50%;
+  margin: 5px;
+  text-align: left;
+  font-size: 16px;
+}
+
+ .flexAddr{
+  background-color: #beffccde;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 50%;
+  margin: 5px;
+  text-align: left;
+  font-size: 16px;
+  font-style: italic;
+}

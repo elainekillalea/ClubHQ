@@ -17,6 +17,7 @@ function MeetupItem(props) {
         </div>
         <div className={classes.content}>
           <h3>{props.title}</h3>
+          <h4>{props.subtitle}</h4>
           <address>{props.address}</address>
         </div>
         <div className={classes.actions}>

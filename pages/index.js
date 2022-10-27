@@ -5,6 +5,7 @@ const DUMMY_MEETUPS = [
         id: 'm1',
         image: 'https://www.planetware.com/photos-large/SEY/best-tropical-vacations-maldives.jpg',
         title: 'A First Meetup',
+        subtitle: 'Welcome',
         address: 'Some address, Galway, Ireland',
         description: 'This is a first meetup!'
     },

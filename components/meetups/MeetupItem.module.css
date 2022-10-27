@@ -4,7 +4,7 @@
 
 .image {
   width: 100%;
-  height: 20rem;
+  height: 30rem;
   overflow: hidden;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
@@ -12,7 +12,7 @@
 
 .image img {
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .content {
@@ -33,8 +33,8 @@
 .actions button {
   font: inherit;
   cursor: pointer;
-  color: #77002e;
-  border: 1px solid #77002e;
+  color: #1b3a1a;
+  border: 1px solid #1b3a1a;
   background-color: transparent;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
