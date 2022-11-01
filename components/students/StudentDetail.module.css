@@ -1,0 +1,54 @@
+.detail {
+    text-align: center;
+    background-color: antiquewhite;
+  }
+  
+  .detail img {
+    width: 75%;
+  }
+  
+  .detail h4{
+    text-align: center;
+    margin: 1px;
+  }
+  
+  .flexContainerHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 5px;
+    border-style: solid;
+    background-color: white;
+  }
+  
+  .flexContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-style: solid;
+    margin: 5px;
+    background-color: rgb(255, 175, 175);
+  }
+  
+  .flexContent{
+    background-color: #c4c0ffd3;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flexImg{
+    width: 30%;
+    margin: 5px;
+  }
+  
+  .flexDesc{
+    background-color: #beffccde;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 30%;
+    margin: 5px;
+    text-align: left;
+    font-size: 16px;
+  }

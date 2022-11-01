@@ -1,25 +1,22 @@
-import MeetupList from '../components/meetups/MeetupList'
+import StudentList from '../components/students/StudentList'
 
-const DUMMY_MEETUPS = [
+const DUMMY_STUDENTS = [
     {
-        id: 'm1',
-        image: 'https://www.planetware.com/photos-large/SEY/best-tropical-vacations-maldives.jpg',
-        title: 'A First Meetup',
-        subtitle: 'Welcome',
-        address: 'Some address, Galway, Ireland',
-        description: 'This is a first meetup!'
+        id: 's1',
+        name: 'Jane',
+        grade: 'Green',
+        address: 'Loughrea, Galway, Ireland'
     },
     {
-        id: 'm2',
-        image: 'https://www.planetware.com/photos-large/SEY/best-tropical-vacations-maldives.jpg',
-        title: 'A Second  Meetup',
-        address: 'Some other address, Galway, Ireland',
-        description: 'This is a second meetup!'
+        id: 's2',
+        name: 'Sally',
+        grade: 'Blue',
+        address: 'Scariff, Clare, Ireland'
     }
 ];
 
 function HomePage() {
-    return <MeetupList meetups={DUMMY_MEETUPS} />
+    return <StudentList students={DUMMY_STUDENTS} />
 }
 
 export default HomePage;
