@@ -20,16 +20,16 @@ export default function AddPost() {
         if (!title || !content) return setError('All fields are required');
 
         // post structure
-        let post = {
+        let student = {
             title,
             content,
             published: false,
             createdAt: new Date().toISOString(),
         };
         // save the post
-        let response = await fetch('/api/posts', {
+        let response = await fetch('/api/students', {
             method: 'POST',
-            body: JSON.stringify(post),
+            body: JSON.stringify(student),
         });
 
         // get the data
