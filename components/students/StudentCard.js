@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
-export default function PostCard({ post }) {
+export default function StudentCard({ student }) {
     const [publishing, setPublishing] = useState(false);
     const [deleting, setDeleting] = useState(false);
     const router = useRouter();
 
     // Publish post
-    const publishPost = async (postId) => {
+    const publishPost = async (studentId) => {
         // change publishing state
         setPublishing(true);
 
         try {
             // Update post
-            await fetch('/api/posts', {
+            await fetch('/api/students', {
                 method: 'PUT',
-                body: postId,
+                body: studentId,
             });
 
             // reset the publishing state
@@ -29,15 +29,15 @@ export default function PostCard({ post }) {
         }
     };
     // Delete post
-    const deletePost = async (postId) => {
+    const deletePost = async (studentId) => {
         //change deleting state
         setDeleting(true);
 
         try {
             // Delete post
-            await fetch('/api/posts', {
+            await fetch('/api/students', {
                 method: 'DELETE',
-                body: postId,
+                body: studentId,
             });
 
             // reset the deleting state
@@ -53,16 +53,16 @@ export default function PostCard({ post }) {
     return (
         <>
             <li>
-                <h3>{post.title}</h3>
-                <p>{post.content}</p>
-                <small>{new Date(post.createdAt).toLocaleDateString()}</small>
+                <h3>{student.title}</h3>
+                <p>{student.content}</p>
+                <small>{new Date(student.createdAt).toLocaleDateString()}</small>
                 <br />
-                {!post.published ? (
-                    <button type="button" onClick={() => publishPost(post._id)}>
+                {!student.published ? (
+                    <button type="button" onClick={() => publishPost(student._id)}>
                         {publishing ? 'Publishing' : 'Publish'}
                     </button>
                 ) : null}
-                <button type="button" onClick={() => deletePost(post['_id'])}>
+                <button type="button" onClick={() => deletePost(student['_id'])}>
                     {deleting ? 'Deleting' : 'Delete'}
                 </button>
             </li>

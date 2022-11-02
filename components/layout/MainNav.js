@@ -12,7 +12,7 @@ function MainNav() {
                         <Link href="/"><a>Home</a></Link>
                     </li>
                     <li>
-                        <Link href="/add-post"><a>Add post</a></Link>
+                        <Link href="/add-student"><a>Add post</a></Link>
                     </li>
                 </ul>
             </nav>

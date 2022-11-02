@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
 import MainNav from '../components/layout/MainNav';
-import PostCard from '../components/students/PostCard';
+import StudentCard from '../components/students/StudentCard';
 import styles from '../styles/Home.module.css';
 
-function HomePage({ posts }) {
+function HomePage({ students }) {
     return (
         <div>
             <Head>
@@ -15,12 +15,12 @@ function HomePage({ posts }) {
 
             <main>
                 <div className={styles.container}>
-                    {posts.length === 0 ? (
+                    {students.length === 0 ? (
                         <h2>No added posts</h2>
                     ) : (
                         <ul>
-                            {posts.map((post, i) => (
-                                <PostCard post={post} key={i} />
+                            {students.map((student, i) => (
+                                <StudentCard student={student} key={i} />
                             ))}
                         </ul>
                     )}
@@ -38,13 +38,13 @@ export async function getServerSideProps(ctx) {
     let { DEV_URL, PROD_URL } = process.env;
 
     // request posts from api
-    let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/posts`);
+    let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/students`);
     // extract the data
     let data = await response.json();
 
     return {
         props: {
-            posts: data['message'],
+            students: data['message'],
         },
     };
 }
