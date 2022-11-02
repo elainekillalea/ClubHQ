@@ -1,22 +1,50 @@
-import StudentList from '../components/students/StudentList'
+import Head from 'next/head';
 
-const DUMMY_STUDENTS = [
-    {
-        id: 's1',
-        name: 'Jane',
-        grade: 'Green',
-        address: 'Loughrea, Galway, Ireland'
-    },
-    {
-        id: 's2',
-        name: 'Sally',
-        grade: 'Blue',
-        address: 'Scariff, Clare, Ireland'
-    }
-];
+import MainNav from '../components/layout/MainNav';
+import PostCard from '../components/students/PostCard';
+import styles from '../styles/Home.module.css';
 
-function HomePage() {
-    return <StudentList students={DUMMY_STUDENTS} />
+function HomePage({ posts }) {
+    return (
+        <div>
+            <Head>
+                <title>Home</title>
+            </Head>
+
+            <MainNav />
+
+            <main>
+                <div className={styles.container}>
+                    {posts.length === 0 ? (
+                        <h2>No added posts</h2>
+                    ) : (
+                        <ul>
+                            {posts.map((post, i) => (
+                                <PostCard post={post} key={i} />
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            </main>
+        </div>
+    );
 }
 
 export default HomePage;
+
+export async function getServerSideProps(ctx) {
+    // get the current environment
+    let dev = process.env.NODE_ENV !== 'production';
+    let { DEV_URL, PROD_URL } = process.env;
+
+    // request posts from api
+    let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/posts`);
+    // extract the data
+    let data = await response.json();
+
+    return {
+        props: {
+            posts: data['message'],
+        },
+    };
+}
