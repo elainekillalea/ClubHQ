@@ -1,0 +1,23 @@
+.mainDiv {
+  padding: 25px 5px 17px 5px;
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 2px solid #444d44;
+  border-radius: 50%;
+  height: 30px;
+  transition: background-color 0.4s;
+}
+
+.mainSpan {
+  background: transparent;
+  color: #ffffff;
+  text-align: center;
+  font-size: 36px;
+}
+
+.mainDiv:hover {
+  background-color: #444d44;
+  border: 2px solid #777777;
+}

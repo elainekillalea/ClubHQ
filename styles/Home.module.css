@@ -4,6 +4,11 @@
   padding: 10px;
 }
 
+.content {
+  text-align: center;
+  padding: 1rem;
+}
+
 .form {
   width: 100%;
 }

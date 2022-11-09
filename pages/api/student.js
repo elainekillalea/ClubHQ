@@ -28,9 +28,8 @@ async function getStudents(req, res) {
     try {
         let { db } = await connectToDatabase();
         let students = await db
-            .collection('posts')
+            .collection('students')
             .find({})
-            .sort({ published: -1 })
             .toArray();
         return res.json({
             message: JSON.parse(JSON.stringify(students)),
@@ -48,7 +47,7 @@ async function getStudents(req, res) {
 async function addStudent(req, res) {
     try {
         let { db } = await connectToDatabase();
-        await db.collection('posts').insertOne(JSON.parse(req.body));
+        await db.collection('students').insertOne(JSON.parse(req.body));
         return res.json({
             message: 'Student added successfully',
             success: true,
@@ -66,7 +65,7 @@ async function updateStudent(req, res) {
     try {
         let { db } = await connectToDatabase();
 
-        await db.collection('posts').updateOne(
+        await db.collection('students').updateOne(
             {
                 _id: new ObjectId(req.body),
             },
@@ -90,7 +89,7 @@ async function deleteStudent(req, res) {
     try {
         let { db } = await connectToDatabase();
 
-        await db.collection('posts').deleteOne({
+        await db.collection('students').deleteOne({
             _id: new ObjectId(req.body),
         });
 

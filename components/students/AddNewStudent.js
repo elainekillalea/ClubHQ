@@ -29,7 +29,6 @@ function AddNewStudent(props) {
 
     return (
         <div>
-            <MainNav />
             <div className={styles.container}>
                 <form onSubmit={submitHandler} className={styles.form}>
                 <div className={styles.formItem}>
