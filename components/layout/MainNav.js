@@ -11,9 +11,6 @@ function MainNav() {
                     <li className={styles.item}>
                         <Link href="/"><a>Home</a></Link>
                     </li>
-                    <li>
-                        <Link href="/add-post"><a>Add post</a></Link>
-                    </li>
                 </ul>
             </nav>
         </header>

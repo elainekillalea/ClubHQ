@@ -1,35 +1,36 @@
 import Head from 'next/head';
-import Card from '../components/ui/Card';
-import Link from 'next/link';
 
 import MainNav from '../components/layout/MainNav';
+import StudentCard from '../components/students/StudentCard';
 import styles from '../styles/Home.module.css';
 
-function HomePage() {
+function StudentList({ students }) {
     return (
         <div>
             <Head>
-                <title>Home</title>
+                <title>List</title>
             </Head>
 
             <MainNav />
 
             <main>
                 <div className={styles.container}>
-                <Card>
-                    <Link href="/student-list"><a>Student List</a></Link>
-                </Card>
-                
-                <Card>
-                    <Link href="/add-student"><a>Add Student</a></Link>
-                </Card>
+                    {students.length === 0 ? (
+                        <h2>No added posts</h2>
+                    ) : (
+                        <ul>
+                            {students.map((student, i) => (
+                                <StudentCard student={student} key={i} />
+                            ))}
+                        </ul>
+                    )}
                 </div>
             </main>
         </div>
     );
 }
 
-export default HomePage;
+export default StudentList;
 
 export async function getServerSideProps(ctx) {
     // get the current environment

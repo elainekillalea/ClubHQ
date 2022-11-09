@@ -6,34 +6,34 @@ export default async function handler(req, res) {
     // switch the methods
     switch (req.method) {
         case 'GET': {
-            return getPosts(req, res);
+            return getStudents(req, res);
         }
 
         case 'POST': {
-            return addPost(req, res);
+            return addStudent(req, res);
         }
 
         case 'PUT': {
-            return updatePost(req, res);
+            return updateStudent(req, res);
         }
 
         case 'DELETE': {
-            return deletePost(req, res);
+            return deleteStudent(req, res);
         }
     }
 }
 
 // Getting all posts.
-async function getPosts(req, res) {
+async function getStudents(req, res) {
     try {
         let { db } = await connectToDatabase();
-        let posts = await db
+        let students = await db
             .collection('posts')
             .find({})
             .sort({ published: -1 })
             .toArray();
         return res.json({
-            message: JSON.parse(JSON.stringify(posts)),
+            message: JSON.parse(JSON.stringify(students)),
             success: true,
         });
     } catch (error) {
@@ -45,12 +45,12 @@ async function getPosts(req, res) {
 }
 
 // Adding a new post
-async function addPost(req, res) {
+async function addStudent(req, res) {
     try {
         let { db } = await connectToDatabase();
         await db.collection('posts').insertOne(JSON.parse(req.body));
         return res.json({
-            message: 'Post added successfully',
+            message: 'Student added successfully',
             success: true,
         });
     } catch (error) {
@@ -62,7 +62,7 @@ async function addPost(req, res) {
 }
 
 // Updating a post
-async function updatePost(req, res) {
+async function updateStudent(req, res) {
     try {
         let { db } = await connectToDatabase();
 
@@ -74,7 +74,7 @@ async function updatePost(req, res) {
         );
 
         return res.json({
-            message: 'Post updated successfully',
+            message: 'Student updated successfully',
             success: true,
         });
     } catch (error) {
@@ -86,7 +86,7 @@ async function updatePost(req, res) {
 }
 
 // deleting a post
-async function deletePost(req, res) {
+async function deleteStudent(req, res) {
     try {
         let { db } = await connectToDatabase();
 
@@ -95,7 +95,7 @@ async function deletePost(req, res) {
         });
 
         return res.json({
-            message: 'Post deleted successfully',
+            message: 'Student deleted successfully',
             success: true,
         });
     } catch (error) {
