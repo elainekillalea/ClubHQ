@@ -1,6 +1,5 @@
 import Head from 'next/head';
 
-import MainNav from '../layout/MainNav';
 import styles from '../../styles/Home.module.css';
 
 

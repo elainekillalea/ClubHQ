@@ -1,9 +1,7 @@
 import { useRef } from 'react';
 
 import Card from '../ui/Card';
-import MainNav from '../layout/MainNav';
-import styles from '../../styles/Home.module.css';
-//import styles from './AddNewStudent.module.css';
+import styles from './AddNewStudent.module.css';
 
 function AddNewStudent(props) {
     const nameRef = useRef();
@@ -28,39 +26,37 @@ function AddNewStudent(props) {
     };
 
     return (
-        <div>
-            <div className={styles.container}>
-                <form onSubmit={submitHandler} className={styles.form}>
-                <div className={styles.formItem}>
-                        <label>Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            ref={nameRef}
-                        />
-                    </div>
-                    <div className={styles.formItem}>
-                        <label>Age</label>
-                        <input
-                            type="text"
-                            name="age"
-                            ref={ageRef}
-                        />
-                    </div>
-                    <div className={styles.formItem}>
-                        <label>Grade</label>
-                        <input
-                            type="text"
-                            name="grade"
-                            ref={gradeRef}
-                        />
-                    </div>
-                    <div className={styles.formItem}>
-                        <button type="submit">Add student</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <Card>
+            <form className={styles.form} onSubmit={submitHandler}>
+            <div className={styles.control}>
+                <label>Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        ref={nameRef}
+                    />
+                </div>
+                <div className={styles.control}>
+                    <label>Age</label>
+                    <input
+                        type="text"
+                        name="age"
+                        ref={ageRef}
+                    />
+                </div>
+                <div className={styles.control}>
+                    <label>Grade</label>
+                    <input
+                        type="text"
+                        name="grade"
+                        ref={gradeRef}
+                    />
+                </div>
+                <div className={styles.control}>
+                    <button type="submit">Add student</button>
+                </div>
+            </form>
+        </Card>
     );
 }
 

@@ -2,7 +2,7 @@ import StudentList from '../../components/students/StudentList'
 
 function StudentListPage() {
 
-    function studentHandler(enteredMeetupData) {
+    function studentHandler(enteredstudentData) {
 
     }
 

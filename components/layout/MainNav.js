@@ -1,30 +1,30 @@
+import classes from './MainNav.module.css';
 import Link from 'next/link'
 import HamMenu from "../generic/HamMenu"
 import Button from "../generic/Button"
-import styles from './MainNav.module.css';
 
 function MainNav() {
-    function ordersCallback() {
+  function ordersCallback() {
     //pageHeaderCtx.setCartState(1, true, null)
-    }
+  }
 
-    function checkoutCallback() {
+  function checkoutCallback() {
     // pageHeaderCtx.setCartState(2, true, true)
-    }
+   }
 
-    function toggleMenuHide() {
+   function toggleMenuHide() {
     // pageHeaderCtx.setCartState(2, true, true)
-    }
-    return (
-        <header className={styles.header}>
-            <HamMenu toggleMenuHide={toggleMenuHide} />
-            <div >
-                <Link href='/' className={styles.logo}>ClubHQ</Link>
-            </div>
-            <Button text1="Checkout" maxWidth="75px" onClickHandler={checkoutCallback} />
-            <Button text1="Orders" maxWidth="70px" onClickHandler={ordersCallback} />
-        </header>
-    );
+   }
+  
+  return (
+    <header className={classes.header}>
+      <HamMenu toggleMenuHide={toggleMenuHide} />
+      <div >
+        <Link href='/' className={classes.logo}>ClubHQ</Link>
+      </div>
+      <Button text1="Profile" maxWidth="70px" onClickHandler={ordersCallback} />
+    </header>
+  );
 }
 
 export default MainNav;

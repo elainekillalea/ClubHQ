@@ -14,12 +14,12 @@ function HomePage() {
             </div>
             <div className={classes.content}>
                 <Card>
-                    <Link href='/add-student'>Add New Meetup</Link>
+                    <Link href='/add-student'>Add Student</Link>
                 </Card>
             </div>
             <div className={classes.content}>
                 <Card>
-                    <Link href='/student-list'>List</Link>
+                    <Link href='/student-list'>Student List</Link>
                 </Card>
             </div>
         </div>
