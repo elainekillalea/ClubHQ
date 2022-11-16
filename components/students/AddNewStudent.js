@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import Card from '../ui/Card';
 import styles from './AddNewStudent.module.css';
 
-function AddNewStudent(props) {
+function AddNewStudent(students) {
     const nameRef = useRef();
     const ageRef = useRef();
     const gradeRef = useRef();
@@ -22,7 +22,7 @@ function AddNewStudent(props) {
             createdAt: new Date().toISOString(),
         }
 
-        props.onAddStudent(studentData);
+        students.onAddStudent(studentData);
     };
 
     return (

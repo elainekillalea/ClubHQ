@@ -22,6 +22,16 @@ function HomePage() {
                     <Link href='/student-list'>Student List</Link>
                 </Card>
             </div>
+            <div className={classes.content}>
+                <Card>
+                    <a href="/api/auth/login">Login</a>
+                </Card>
+            </div>
+            <div className={classes.content}>
+                <Card>
+                    <a href="/api/auth/logout">Logout</a>
+                </Card>
+            </div>
         </div>
    );
 }

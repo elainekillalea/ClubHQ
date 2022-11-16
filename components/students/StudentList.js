@@ -1,17 +1,16 @@
 import Head from 'next/head';
-
+import StudentCard from './StudentCard'
 import styles from '../../styles/Home.module.css';
 
 
-function HomePage(props) {
+function StudentList(props) {
     return (
-        
         <div className={styles.container}>
             {props.length === 0 ? (
-                <h2>No added posts</h2>
+                <h2>No added students</h2>
             ) : (
                 <ul>
-                    {props.map((student, i) => (
+                    {props.student.map((student, i) => (
                         <StudentCard 
                             student={student} 
                             key={i} 
@@ -23,7 +22,7 @@ function HomePage(props) {
     );
 }
 
-export default HomePage;
+export default StudentList;
 
 export async function getServerSideProps(ctx) {
     // get the current environment

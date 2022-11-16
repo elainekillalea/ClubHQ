@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import Card from '../ui/Card';
 
-export default function StudentCard(props) {
+export default function StudentCard({students}) {
     
     const [deleting, setDeleting] = useState(false);
     const router = useRouter();
@@ -36,12 +36,12 @@ export default function StudentCard(props) {
     };
     return (
             <Card>
-                <h3>{props.name}</h3>
-                <p>{props.age}</p>
-                <p>{props.grade}</p>
-                <small>{new Date(props.createdAt).toLocaleDateString()}</small>
+                <h3>{students.name}</h3>
+                <p>{students.age}</p>
+                <p>{students.grade}</p>
+                <small>{new Date(students.createdAt).toLocaleDateString()}</small>
                 <br />
-                <button type="button" onClick={() => deleteStudent(props['_id'])}>
+                <button type="button" onClick={() => deleteStudent(students['_id'])}>
                     {deleting ? 'Deleting' : 'Delete'}
                 </button>
             </Card>
