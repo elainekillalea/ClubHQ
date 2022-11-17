@@ -4,11 +4,34 @@ import { useRouter } from 'next/router';
 
 import Card from '../ui/Card';
 
-export default function StudentCard({students}) {
+export default function StudentCard({student}) {
     
+    const [publishing, setPublishing] = useState(false);
     const [deleting, setDeleting] = useState(false);
     const router = useRouter();
 
+        // Publish post
+        const publishPost = async (studentId) => {
+            // change publishing state
+            setPublishing(true);
+    
+            try {
+                // Update post
+                await fetch('/api/students', {
+                    method: 'PUT',
+                    body: studentId,
+                });
+    
+                // reset the publishing state
+                setPublishing(false);
+    
+                // reload the page
+                return router.push(router.asPath);
+            } catch (error) {
+                // Stop publishing state
+                return setPublishing(false);
+            }
+        };
     // Delete post
     const deleteStudent = async (studentId) => {
         //change deleting state
@@ -36,12 +59,17 @@ export default function StudentCard({students}) {
     };
     return (
             <Card>
-                <h3>{students.name}</h3>
-                <p>{students.age}</p>
-                <p>{students.grade}</p>
-                <small>{new Date(students.createdAt).toLocaleDateString()}</small>
+                <h3>{student.name}</h3>
+                <p>{student.age}</p>
+                <p>{student.grade}</p>
+                <small>{new Date(student.createdAt).toLocaleDateString()}</small>
                 <br />
-                <button type="button" onClick={() => deleteStudent(students['_id'])}>
+                {!student.published ? (
+                    <button type="button" onClick={() => publishPost(student._id)}>
+                        {publishing ? 'Publishing' : 'Publish'}
+                    </button>
+                ) : null}
+                <button type="button" onClick={() => deleteStudent(student['_id'])}>
                     {deleting ? 'Deleting' : 'Delete'}
                 </button>
             </Card>

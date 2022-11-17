@@ -4,7 +4,7 @@ import classes from '../styles/Home.module.css';
 
 
 function HomePage() {
-
+  
     return (
         <div>
             <div className={classes.content}>
@@ -24,14 +24,14 @@ function HomePage() {
             </div>
             <div className={classes.content}>
                 <Card>
-                    <a href="/api/auth/login">Login</a>
+                    <Link href='/api/auth/login'>Login</Link>
                 </Card>
             </div>
-            <div className={classes.content}>
+            {/* <div className={classes.content}>
                 <Card>
-                    <a href="/api/auth/logout">Logout</a>
+                    <Link href='/calendar-page'>Calendar</Link>
                 </Card>
-            </div>
+            </div> */}
         </div>
    );
 }
