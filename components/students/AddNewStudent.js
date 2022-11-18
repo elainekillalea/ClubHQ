@@ -46,7 +46,6 @@ function AddNewStudent() {
                     name,
                     age,
                     grade,
-                    published: false,
                     createdAt: new Date().toISOString(),
                 };
                 // save the post
