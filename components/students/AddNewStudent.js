@@ -41,37 +41,36 @@ function AddNewStudent() {
         // fields check
         if (!name || !age || !grade) return setError('All fields are required');
     
-                // post structure
-                let student = {
-                    name,
-                    age,
-                    grade,
-                    createdAt: new Date().toISOString(),
-                };
-                // save the post
-                let response = await fetch('/api/students', {
-                    method: 'POST',
-                    body: JSON.stringify(student),
-                });
-        
-                // get the data
-                let data = await response.json();
-        
-                if (data.success) {
-                    // reset the fields
-                    setName('');
-                    setAge('');
-                    setGrade('');
-                    // set the message
-                    return setMessage(data.message);
-                } else {
-                    // set the error
-                    return setError(data.message);
-                }
+        // post structure
+        let student = {
+            name,
+            age,
+            grade,
+            createdAt: new Date().toISOString(),
+        };
+        // save the post
+        let response = await fetch('/api/students', {
+            method: 'POST',
+            body: JSON.stringify(student),
+        });
+
+        // get the data
+        let data = await response.json();
+
+        if (data.success) {
+            // reset the fields
+            setName('');
+            setAge('');
+            setGrade('');
+            // set the message
+            return setMessage(data.message);
+        } else {
+            // set the error
+            return setError(data.message);
+        }
     };
 
     return (
-        <Card>
             <form className={styles.form} onSubmit={submitHandler}>
             {error ? (
                         <div className={styles.formItem}>
@@ -117,7 +116,6 @@ function AddNewStudent() {
                     <button type="submit">Add student</button>
                 </div>
             </form>
-        </Card>
     );
 }
 

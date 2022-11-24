@@ -18,11 +18,11 @@ function MainNav() {
   
   return (
     <header className={classes.header}>
-      <HamMenu toggleMenuHide={() => toggleMenuHide()} />
+      {/* <HamMenu toggleMenuHide={() => toggleMenuHide()} /> */}
       <div >
         <Link href='/' className={classes.logo}>ClubHQ</Link>
       </div>
-      <Button text1="Profile" maxWidth="70px" onClickHandler={checkoutCallback} />
+      {/* <Button text1="Profile" maxWidth="70px" onClickHandler={checkoutCallback} /> */}
       
     </header>
   );
