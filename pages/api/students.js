@@ -50,6 +50,7 @@ async function addStudent(req, res) {
         await db.collection('students').insertOne(JSON.parse(req.body));
         return res.json({
             message: 'Student added successfully',
+
             success: true,
         });
     } catch (error) {
