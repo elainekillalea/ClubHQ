@@ -1,23 +1,32 @@
-import Link from 'next/link';
-
-import styles from './MainNav.module.css';
+import classes from './MainNav.module.css';
+import Link from 'next/link'
+import HamMenu from "../generic/HamMenu"
+import Button from "../generic/Button"
 
 function MainNav() {
-    return (
-        <header className={styles.header}>
-            <div className={styles.logo}>ClubHQ</div>
-            <nav>
-                <ul>
-                    <li className={styles.item}>
-                        <Link href="/"><a>Home</a></Link>
-                    </li>
-                    <li>
-                        <Link href="/add-student"><a>Add post</a></Link>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-    );
+
+  function checkoutCallback() {
+  }
+
+  function toggleMenuHide() {
+    if (popupToggle == true) {
+      setPopupToggle(false)
+    } else {
+      setPopupToggle(true)
+    }
+  }
+  
+  return (
+    <header className={classes.header}>
+      {/* <HamMenu toggleMenuHide={() => toggleMenuHide()} /> */}
+      <div >
+        <Link href='/' className={classes.logo}>ClubHQ</Link>
+      </div>
+      {/* <Button text1="Profile" maxWidth="70px" onClickHandler={checkoutCallback} /> */}
+      
+    </header>
+  );
 }
 
 export default MainNav;
+

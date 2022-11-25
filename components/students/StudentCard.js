@@ -1,37 +1,21 @@
 import { useState } from 'react';
+import { useRef } from 'react';
 import { useRouter } from 'next/router';
 
-export default function StudentCard({ student }) {
-    const [publishing, setPublishing] = useState(false);
+import Card from '../ui/Card';
+import styles from './StudentCard.module.css';
+import { Collapse, Grid, Container, Row, Col } from "@nextui-org/react";
+
+export default function StudentCard({student}) {
+    
     const [deleting, setDeleting] = useState(false);
     const router = useRouter();
 
-    // Publish post
-    const publishPost = async (studentId) => {
-        // change publishing state
-        setPublishing(true);
-
-        try {
-            // Update post
-            await fetch('/api/students', {
-                method: 'PUT',
-                body: studentId,
-            });
-
-            // reset the publishing state
-            setPublishing(false);
-
-            // reload the page
-            return router.push(router.asPath);
-        } catch (error) {
-            // Stop publishing state
-            return setPublishing(false);
-        }
-    };
     // Delete post
-    const deletePost = async (studentId) => {
+    const deleteStudent = async (studentId) => {
         //change deleting state
         setDeleting(true);
+        //deletingRef = true;
 
         try {
             // Delete post
@@ -42,30 +26,51 @@ export default function StudentCard({ student }) {
 
             // reset the deleting state
             setDeleting(false);
+            //deletingRef = false;
 
             // reload the page
             return router.push(router.asPath);
         } catch (error) {
             // stop deleting state
+            //return deletingRef = false;
             return setDeleting(false);
         }
     };
     return (
-        <>
-            <li>
-                <h3>{student.title}</h3>
-                <p>{student.content}</p>
-                <small>{new Date(student.createdAt).toLocaleDateString()}</small>
-                <br />
-                {!student.published ? (
-                    <button type="button" onClick={() => publishPost(student._id)}>
-                        {publishing ? 'Publishing' : 'Publish'}
-                    </button>
-                ) : null}
-                <button type="button" onClick={() => deletePost(student['_id'])}>
-                    {deleting ? 'Deleting' : 'Delete'}
-                </button>
-            </li>
-        </>
+            <Container fluid wrap>
+                <Collapse.Group splitted>
+                    <Collapse title={student.name}>
+                        <div className={styles.flexContain}>
+                            <div className={styles.flexRow}>
+                                <div className={styles.flexHead}>
+                                    <p>Age:</p>
+                                </div>
+                                <div className={styles.flexInfo}>
+                                    <p>{student.age}</p>
+                                </div>
+                            </div>
+                            <div className={styles.flexRow}>
+                                <div className={styles.flexHead}>
+                                    <p>Grade:</p>
+                                </div>
+                                <div className={styles.flexInfo}>
+                                    <p>{student.grade}</p>
+                                </div>
+                            </div>
+                            <div className={styles.flexRow}>
+                                <div className={styles.flexHead}>
+                                    <small>Date Created:</small>
+                                </div>
+                                <div className={styles.flexInfo}>
+                                    <small>{new Date(student.createdAt).toLocaleDateString()}</small>
+                                </div>
+                            </div>
+                                <button type="button" onClick={() => deleteStudent(student['_id'])}>
+                                    {deleting ? 'Deleting' : 'Delete'}
+                                </button>
+                        </div>
+                    </Collapse>
+                </Collapse.Group>
+            </Container>
     );
 }

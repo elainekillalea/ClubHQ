@@ -30,7 +30,6 @@ async function getStudents(req, res) {
         let students = await db
             .collection('students')
             .find({})
-            .sort({ published: -1 })
             .toArray();
         return res.json({
             message: JSON.parse(JSON.stringify(students)),
@@ -50,7 +49,8 @@ async function addStudent(req, res) {
         let { db } = await connectToDatabase();
         await db.collection('students').insertOne(JSON.parse(req.body));
         return res.json({
-            message: 'Post added successfully',
+            message: 'Student added successfully',
+
             success: true,
         });
     } catch (error) {
@@ -74,7 +74,7 @@ async function updateStudent(req, res) {
         );
 
         return res.json({
-            message: 'Post updated successfully',
+            message: 'Student updated successfully',
             success: true,
         });
     } catch (error) {
@@ -95,7 +95,7 @@ async function deleteStudent(req, res) {
         });
 
         return res.json({
-            message: 'Post deleted successfully',
+            message: 'Student deleted successfully',
             success: true,
         });
     } catch (error) {
