@@ -69,7 +69,6 @@ async function updateStudent(req, res) {
             {
                 _id: new ObjectId(req.body),
             },
-            { $set: { published: true } }
         );
 
         return res.json({

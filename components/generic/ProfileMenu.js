@@ -1,15 +1,17 @@
 import { Dropdown } from "@nextui-org/react";
+import styles from "./ProfileMenu.module.css"
 
 
 export default function ProfileMenu() {
   return (
     <Dropdown>
-      <Dropdown.Button flat text1="Profile" maxWidth="70px">Trigger</Dropdown.Button>
+      <Dropdown.Button flat text1="Profile" >Profile</Dropdown.Button>
       <Dropdown.Menu aria-label="Static Actions">
-        <Dropdown.Item key="info">User Info</Dropdown.Item>
-        <Dropdown.Item key="link">link</Dropdown.Item>
-        <Dropdown.Item key="file">file</Dropdown.Item>;
-        <Dropdown.Item key="logout" withDivider color="error">
+        <Dropdown.Item key="info">User Info</Dropdown.Item>;
+        <Dropdown.Item key="login" withDivider color="error">
+          Login
+        </Dropdown.Item>
+        <Dropdown.Item key="logout" color="error">
           Logout
         </Dropdown.Item>
       </Dropdown.Menu>
