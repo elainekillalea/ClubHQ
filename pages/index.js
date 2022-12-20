@@ -5,43 +5,21 @@ import React from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 
 function HomePage() {
-    const { user, error, isLoading } = useUser();
-    return (
-        <div>
-            {/* <div className={classes.content}>
-                <Card>
-                    <Link href='/'>Home</Link>
-                </Card>
-            </div>
-            <div className={classes.content}>
-                <Card>
-                    <Link href='/add-student'>Add Student</Link>
-                </Card>
-            </div>
-            <div className={classes.content}>
-                <Card>
-                    <Link href='/student-list'>Student List</Link>
-                </Card>
-            </div> */}
-            <div className={classes.content}>
-                <Card>
-                    <Link href='/api/auth/login'>Login</Link>
-                </Card>
-            </div>
-            <div className={classes.content}>
-                <Card>
-                    <Link href='/api/auth/logout'>Logout</Link>
-                </Card>
-            </div>
-            {/* <div className={classes.content}>
-                <Card>
-                    <Link href='/calendar-page'>Calendar</Link>
-                </Card>
-            </div> */}
-        {/* </div>
-        <div> */}
+  const { user, error, isLoading } = useUser();
+  return (
+      <div>
+        {/* <div className={classes.content}>
+            <Card>
+                <Link href='/api/auth/login'>Login</Link>
+            </Card>
+        </div>
+        <div className={classes.content}>
+            <Card>
+                <Link href='/api/auth/logout'>Logout</Link>
+            </Card>
+        </div> */}
 
-        <h1>Next.js and Auth0 Example</h1>
+        <h1>Welcome</h1>
   
         {isLoading && <p>Loading login info...</p>}
   
@@ -56,6 +34,27 @@ function HomePage() {
           <>
             <h4>Rendered user info on the client</h4>
             <pre data-testid="profile">{JSON.stringify(user, null, 2)}</pre>
+            
+            <div className={classes.content}>
+                <Card>
+                    <Link href='/'>Home</Link>
+                </Card>
+            </div>
+            <div className={classes.content}>
+                <Card>
+                    <Link href='/add-student'>Add Student</Link>
+                </Card>
+            </div>
+            <div className={classes.content}>
+                <Card>
+                    <Link href='/student-list'>Student List</Link>
+                </Card>
+            </div>
+            <div className={classes.content}>
+                <Card>
+                    <Link href='/calendar-page'>Calendar</Link>
+                </Card>
+            </div>
           </>
         )}
   

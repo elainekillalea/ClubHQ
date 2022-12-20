@@ -1,19 +1,36 @@
-import classes from './MainNav.module.css';
+import classes from './SideNav.module.css';
 import Link from 'next/link'
-import HamMenu from "../generic/HamMenu"
-import Button from "../generic/Button"
+import HamMenuContent from "../generic/HamMenuContent"
+import { useUser } from '@auth0/nextjs-auth0';
 
-function MainNav() {
-
-  function checkoutCallback() {
-  }
+function SideNav() {
   
   return (
     <header className={classes.header}>
-      <Button text1="Profile" maxWidth="70px" onClickHandler={checkoutCallback} />
-      
+      <nav>
+        <ul>
+          <li>
+            <Link href='/'>Home</Link>
+          </li>
+          {/* <li>
+          <Link href='/add-student' className={classes.logo}>Add Student</Link>
+          </li>
+          <li>
+          <Link href='/student-list' className={classes.logo}>Student List</Link>
+          </li>
+          <li>
+          <Link href='/calendar-page' className={classes.logo}>Calendar</Link>
+          </li> */}
+          <li>
+          <Link href='/api/auth/login'>Login</Link>
+          </li>
+          <li>
+          <Link href='/api/auth/logout'>Logout</Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }
 
-export default MainNav;
+export default SideNav;
