@@ -3,3 +3,21 @@
   width: 90%;
   max-width: 40rem;
 }
+
+.content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.side {
+  display: flex;
+  width: 20%;
+  /* max-width: 40rem; */
+}
+
+.page {
+  display: flex;
+  width: 80%;
+  /* max-width: 40rem; */
+}

@@ -25,7 +25,7 @@ export default function ProtectedPage() {
           <pre>{JSON.stringify(user, null, 2)}</pre>
         </>
       )}
-      
+
     </Layout>
   );
 }
