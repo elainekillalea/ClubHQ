@@ -72,45 +72,53 @@ function AddNewStudent() {
 
     return (
             <form className={styles.form} onSubmit={submitHandler}>
-            {error ? (
-                        <div className={styles.formItem}>
-                            <h3 className={styles.error}>{error}</h3>
-                        </div>
-                    ) : null}
-                    {message ? (
-                        <div className={styles.formItem}>
-                            <h3 className={styles.message}>{message}</h3>
-                        </div>
-                    ) : null}
-            <div className={styles.control}>
-                <label>Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        onChange={(e) => setName(e.target.value)}
-                        value={name}
-                        placeholder="name"
-                    />
+                {error ? (
+                            <div className={styles.formItem}>
+                                <h3 className={styles.error}>{error}</h3>
+                            </div>
+                        ) : null}
+                {message ? (
+                    <div className={styles.formItem}>
+                        <h3 className={styles.message}>{message}</h3>
+                    </div>
+                ) : null}
+
+                <div className={styles.control}>
+                    <label>Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
+                            placeholder="name"
+                        />
                 </div>
                 <div className={styles.control}>
                     <label>Age</label>
-                    <input
-                        type="text"
-                        name="age"
-                        onChange={(e) => setAge(e.target.value)}
-                        value={age}
-                        placeholder="age"
-                    />
+                        <input
+                            type="text"
+                            name="age"
+                            onChange={(e) => setAge(e.target.value)}
+                            value={age}
+                            placeholder="age"
+                        />
                 </div>
                 <div className={styles.control}>
                     <label>Grade</label>
-                    <input
-                        type="text"
-                        name="grade"
-                        onChange={(e) => setGrade(e.target.value)}
-                        value={grade}
-                        placeholder="grade"
-                    />
+                        <select
+                            type="text"
+                            name="grade"
+                            onChange={(e) => setGrade(e.target.value)}
+                            value={grade}
+                            placeholder="grade"
+                            className={styles.customselect}
+                        >
+                            <option value="White">White</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Purple">Purple</option>
+                            <option value="Brown">Brown</option>
+                            <option value="Black">Black</option>
+                        </select>
                 </div>
                 <div className={styles.actions}>
                     <button type="submit">Add student</button>

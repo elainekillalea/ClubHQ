@@ -1,21 +1,28 @@
-import MainNav from './MainNav';
+import NavBar from './NavBar';
+import MainContent from './MainContent';
+import SideContent from './SideContent';
+import Footer from './Footer';
 import classes from './Layout.module.css';
-import SideNav from './SideNav';
-import Link from 'next/link'
 
 function Layout(props) {
   return (
     <div>
-      <MainNav />
-      <div className={classes.content}>
-        <div className={classes.side}>
-          <SideNav />
+      <NavBar/>
+      <div className={classes.row}>
+        <div className={classes.mainCol}>
+          <div className={classes.card}>
+            <main className={classes.main}>{props.children}</main>
+          </div>
         </div>
-        <div className={classes.page}>
-          <main className={classes.main}>{props.children}</main>
+        <div className={classes.side}>
+          <div className={classes.card}>
+            <SideContent />
+        </div>
         </div>
       </div>
+      <Footer />
     </div>
+
   );
 }
 

@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import Calendar from 'react-calendar';
+import Calendar from 'react-calendar';	
+import 'react-calendar/dist/Calendar.css';
+import './Calendar.module.css';
 
 function CC() {
-  const [date, setDate] = useState(new Date());
 
+  const [date, setDate] = useState(new Date());
+ 
   return (
     <div className='app'>
       <h1 className='text-center'>React Calendar</h1>

@@ -8,6 +8,7 @@ function HomePage() {
   const { user, error, isLoading } = useUser();
   return (
       <div>
+        <h1>Welcome</h1>
         {/* <div className={classes.content}>
             <Card>
                 <Link href='/api/auth/login'>Login</Link>
@@ -19,9 +20,8 @@ function HomePage() {
             </Card>
         </div> */}
 
-        <h1>Welcome</h1>
   
-        {isLoading && <p>Loading login info...</p>}
+        {/* {isLoading && <p>Loading login info...</p>}
   
         {error && (
           <>
@@ -67,7 +67,7 @@ function HomePage() {
               Once you have logged in you should be able to click in <i>Protected Page</i> and <i>Logout</i>
             </p>
           </>
-        )}
+        )} */}
       </div>
    );
 }

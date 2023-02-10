@@ -1,23 +1,18 @@
-import StudentCard from '../../components/students/StudentCard';
+import StudentL from '../../components/students/StudentTable';
 import classes from '../../styles/Home.module.css';
+import Card from '../../components/ui/Card';
+import Link from 'next/link'
 
 function StudentList({students}) {
     return(
         <div className={classes.content}>
-            <div className={classes.container}>
-                {students.length === 0 ? (
-                    <h2>No added students</h2>
-                ) : (
-                    <ul>
-                        {students.map((student, i) => (
-                            <StudentCard 
-                                student={student} 
-                                key={i} 
-                            />
-                        ))}
-                    </ul>
-                )}
-            </div>
+          <StudentL
+            students={students} 
+          />
+          <div className={classes.spacer}></div>
+          <Card>
+            <Link href='/add-student'>Add Student</Link>
+        </Card>
         </div>
     );
 }
