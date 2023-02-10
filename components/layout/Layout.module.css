@@ -28,6 +28,7 @@
 /* Style the top navigation bar */
 .navbar {
   display: flex;
+  justify-content: center;
   background-color: #333;
 }
 

@@ -1,20 +1,31 @@
 import React from 'react';
-// import { useUser } from '@auth0/nextjs-auth0';
+import styles from "./Profile.module.css";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Profile() {
-  // const { user, error, isLoading } = useUser();
 
-  // if (isLoading) return <div>Loading...</div>;
-  // if (error) return <div>{error.message}</div>;
+  const { data: session } = useSession();
 
   return (
-    // user && (
       <div>
-        {/* <img src={user.picture} alt={user.name} /> */}
-        <h2>nickname</h2>
-        <h3>name </h3>
-        <h4>org_id </h4>
+        {!session ? (
+          <>
+            <p>Not signed in</p>
+            <br />
+            <button onClick={() => signIn()}>Sign in</button>
+          </>
+        ) : (
+          <main className={styles.main}>
+            <div className={styles.header}>
+              <h4>Welcome <br /> {session.user.name}</h4>
+            </div>
+            <br />
+            <h1>You can now view your membership pages</h1>
+            <br />
+            <button onClick={() => signOut()}>Sign out</button>
+            
+          </main>
+        )}
       </div>
-    // )
   );
 }
