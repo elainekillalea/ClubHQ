@@ -6,7 +6,7 @@
 
 .content {
   text-align: center;
-  padding: 1rem;
+  padding: 20px;
 }
 
 .form {
@@ -63,4 +63,8 @@
 
 .message {
   color: green;
+}
+
+.spacer {
+  padding: 20px;
 }

@@ -1,19 +1,26 @@
-import "@progress/kendo-theme-default/dist/all.css";
-import RoomScheduler from "../../components/calendar/Scheduler";
-import Calendar from "../../components/calendar/Calendar";
+import Calendar from "../../components/tools/Calendar";
 import 'react-calendar/dist/Calendar.css';
 
-function RS() {
+function Cal({attendance}) {
   return (
-    <div className="App">
-      <hr className="k-my-8" />
-      <Calendar />
-      {/* <RoomScheduler /> */}
-    </div>
+    <Calendar attendance={attendance} />
   );
 }
 
-export default RS;
+export default Cal;
 
+export async function getServerSideProps(ctx) {
+  const { DEV_URL } = process.env;
 
+  const response = await fetch(DEV_URL + '/api/attendance');
+  
+  const data = await response.json();
+  // console.log(data);
+
+  return {
+    props: {
+      attendance: data['message'],
+    },
+  };
+}
 

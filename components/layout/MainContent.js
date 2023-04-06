@@ -1,16 +1,10 @@
 import classes from './Layout.module.css';
 import Calendar from '../tools/Calendar';
-import Progress from '../tools/Progress';
 
-function MainC() {
+function MainC(props) {
   return (
-    <div className={classes.main}>
-        <div className={classes.card}>
-            <Calendar />
-        </div>
-        <div className={classes.card}>
-            <Progress />
-        </div>
+    <div className={classes.card}>
+      <main className={classes.main}>{props.children}</main>
     </div>
   );
 }

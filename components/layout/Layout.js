@@ -9,8 +9,14 @@ function Layout(props) {
     <div>
       <NavBar/>
       <div className={classes.row}>
-        <MainContent />
-        <SideContent />
+        <div className={classes.mainCol}>
+          <div className={classes.card}>
+            <main className={classes.main}>{props.children}</main>
+          </div>
+        </div>
+        <div className={classes.side}>
+          <SideContent />
+        </div>
       </div>
       <Footer />
     </div>

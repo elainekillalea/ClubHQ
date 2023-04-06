@@ -1,25 +1,50 @@
 import classes from './Layout.module.css';
 import Link from 'next/link'
+import Image from 'next/image';
+import { useSession, signIn, signOut } from "next-auth/react";
+
 
 function NavBar() {
+  const { data: session } = useSession();
   return (
     <div>
       {/* Header */}
       <div className={classes.header}>
         <h1>ClubHQ</h1>
+        <div style={{ borderRadius: '50%', overflow: 'hidden', width: '80px', height: '80px' }}>
+          <Image
+            src="/crest2.png"
+            objectFit="cover"
+            width="80px"
+            height="80px"
+            placeholder="blur"
+            blurDataURL="/crest2.png"
+          />
+        </div>
       </div>
-      <div className={classes.navbar}>
-        <Link href='/'>Home</Link>
-        <Link href='/'>Grade</Link>
-        <Link href='/'>Calendar</Link>
-        <Link href='/' float="right" >Profile</Link>
-      </div>
+      
+      {/* Link Bar */}
+      {!session ? (
+        <>
+          <div className={classes.navbar}>
+          <Link href='/'>Home</Link>
+        </div>
+        </>
+      ) : session.user.email === 'ellakillalea00@gmail.com' ? (
+        <div className={classes.navbar}>
+          <Link href='/'>Home</Link>
+          <Link href='/profile-page'>Profile</Link>
+          <Link href='/calendar-page'>Calendar</Link>
+          <Link href='/student-list'>Student List</Link>
+        </div>
+      ) : (
+        <div className={classes.navbar}>
+          <Link href='/'>Home</Link>
+          <Link href='/profile-page'>Profile</Link>
+          <Link href='/calendar-page'>Calendar</Link>
+        </div>
+      )}
     </div>
-      // <header className={classes.header}>
-      //   <div >
-      //     <Link href='/' className={classes.logo}>ClubHQ</Link>
-      //   </div>
-      // </header>
   );
 }
 

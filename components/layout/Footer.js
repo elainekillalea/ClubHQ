@@ -4,7 +4,7 @@ import Link from 'next/link'
 function Footer() {
   return (
     <div className={classes.footer}>
-        <h2>Footer</h2>
+        <h2>@FinalYearProject</h2>
     </div>
   );
 }

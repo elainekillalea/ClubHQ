@@ -8,15 +8,17 @@
 
 .control label {
   display: block;
-  font-weight: bold;
+  font-weight: normal;
   margin-bottom: 0.5rem;
 }
 
 .control input,
+.control select,
 .control textarea {
   display: block;
   font: inherit;
   border-radius: 4px;
+  background-color: white;
   border: 1px solid #ccc;
   padding: 0.25rem;
   width: 100%;
@@ -30,7 +32,7 @@
 .actions button {
   font: inherit;
   cursor: pointer;
-  background-color:  darkslategrey;
+  background-color:  #86a479;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
@@ -39,6 +41,5 @@
 
 .actions button:hover,
 .actions button:active {
-  background-color: darkslategrey;
-  border-color: #a50e48;
+  background-color: #86a479;
 }

@@ -8,20 +8,28 @@
 
 /* Header/logo Title */
 .header {
-  padding: 25px;
-  text-align: center;
-  background: #4d4d4d;
+  padding: 20px;
+  background: #201426;
   color: white;
+  display: flex;
+  justify-content: space-between;
 }  
 
 .header h1 {
-  font-size: 35px;
+  font-family: Trebuchet, serif;
+  font-size: 50px;
+}
+
+.Image {
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 /* Style the top navigation bar */
 .navbar {
   display: flex;
-  background-color: #333;
+  justify-content: center;
+  background-color: #92a88a;
 }
 
 /* Style the navigation bar links */
@@ -47,16 +55,22 @@
 /* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
 .side {
-  flex: 30%;
-  background-color: #f1f1f1;
+  flex: 25%;
+  background-color: #c2bcc2;
   padding: 20px;
 }
 
 /* Main column */
-.main {
-  flex: 70%;
-  background-color: #bfbfbf;
+.mainCol {
+  flex: 75%;
+  background-color: #A79FA8;
   padding: 20px;
+  min-height: 750px;
+}
+.main {
+  margin: 3rem auto;
+  width: 90%;
+  max-width: 40rem;
 }
 
 /* Add a card effect for articles */
@@ -64,6 +78,7 @@
   background-color: white;
   padding: 20px;
   margin-top: 20px;
+  /* opacity: 0.5; */
 }
 
 /* Fake image, just for this example */
@@ -78,7 +93,8 @@
   padding: 20px;
   text-align: center;
   background: #ddd;
-  position: absolute;
+  position: relative;
+  left: 0;
   bottom: 0;
   width: 100%;
 }
