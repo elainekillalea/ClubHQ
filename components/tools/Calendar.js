@@ -6,7 +6,6 @@ import Card from "../ui/Card";
 
 function CalendarP({ attendance }) {
   const [date, setDate] = useState(new Date());
-  console.log("Att cal: " + attendance);
 
   return (
     <div>
