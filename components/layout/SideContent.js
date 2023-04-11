@@ -1,9 +1,9 @@
 import classes from './Layout.module.css';
-import Profile from '../profile/Profile';
+import Profile from '../profile/SideProfile';
 
 function SideC(props) {
   return (
-      <div className={classes.card}>
+      <div>
         {/* <main className={classes.main}>{props.children}</main> */}
         <div className={classes.card}>
           <Profile />
