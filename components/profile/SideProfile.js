@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from "./Profile.module.css";
+import styles from "./SideProfile.module.css";
+import Link from 'next/link'
 import { useSession, signIn, signOut } from "next-auth/react";
 
-export default function Profile() {
+export default function sideProfile({students}) {
 
   const { data: session } = useSession();
-
+   
   return (
       <div>
         {!session ? (
@@ -15,12 +16,14 @@ export default function Profile() {
             <button onClick={() => signIn()}>Sign in</button>
           </>
         ) : (
+          
           <main className={styles.main}>
             <div className={styles.header}>
-              <h4>Welcome <br /> {session.user.name}</h4>
+              <h4>Welcome <br /> {session?.user?.name}</h4>
             </div>
             <br />
-            <h1>You can now view your membership pages</h1>
+            <Link href='/profile-page'>You can view your profile here</Link>
+            <br />
             <br />
             <button onClick={() => signOut()}>Sign out</button>
             

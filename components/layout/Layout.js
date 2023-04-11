@@ -15,9 +15,7 @@ function Layout(props) {
           </div>
         </div>
         <div className={classes.side}>
-          <div className={classes.card}>
-            <SideContent />
-        </div>
+          <SideContent />
         </div>
       </div>
       <Footer />
