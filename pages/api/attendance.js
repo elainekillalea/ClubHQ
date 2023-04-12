@@ -5,56 +5,32 @@ const ObjectId = require("mongodb").ObjectId;
 export default async function handler(req, res) {
   switch (req.method) {
     case "GET": {
-      if (req.query.email) {
-        // console.log('get student')
-        return getSingleStudent(req, res);
-      } 
-      else {
-        // console.log('get students called')
-        return getStudents(req, res);
-      }
+      console.log('Get attendance');
+      return getAttendance(req, res);
     }
 
     case "POST": {
-      return addStudent(req, res);
+      return addAttendance(req, res);
     }
 
     case "PUT": {
-      return updateStudent(req, res);
+      return updateAttendance(req, res);
     }
 
     case "DELETE": {
-      return deleteStudent(req, res);
+      return deleteAttendance(req, res);
     }
-  }
-}
-
-// Getting a single student
-async function getSingleStudent(req, res) {
-  try {
-    let { db } = await connectToDatabase();
-    let student = await db.collection("students").findOne({ email: req.query.email });
-    // console.log('1 ' + student)
-    // console.log('2 ' + JSON.stringify(student))
-    return res.json({
-      message: JSON.parse(JSON.stringify(student)),
-      success: true,
-    });
-  } catch (error) {
-    return res.json({
-      message: new Error(error).message,
-      success: false,
-    });
   }
 }
 
 // Getting all students.
-async function getStudents(req, res) {
+async function getAttendance(req, res) {
   try {
     let { db } = await connectToDatabase();
-    let students = await db.collection("students").find({}).toArray();
+    let attendance = await db.collection("attendance").find({}).toArray();
+    console.log('Att db: ' + attendance);
     return res.json({
-      message: JSON.parse(JSON.stringify(students)),
+      message: JSON.parse(JSON.stringify(attendance)),
       success: true,
     });
   } catch (error) {
@@ -66,7 +42,7 @@ async function getStudents(req, res) {
 }
 
 // Adding a new student
-async function addStudent(req, res) {
+async function addAttendance(req, res) {
   try {
     let { db } = await connectToDatabase();
     await db.collection("students").insertOne(JSON.parse(req.body));
@@ -83,7 +59,7 @@ async function addStudent(req, res) {
 }
 
 // Updating a post
-async function updateStudent(req, res) {
+async function updateAttendance(req, res) {
   try {
     let { db } = await connectToDatabase();
 
@@ -107,7 +83,7 @@ async function updateStudent(req, res) {
 }
 
 // deleting a post
-async function deleteStudent(req, res) {
+async function deleteAttendance(req, res) {
   try {
     let { db } = await connectToDatabase();
 
@@ -117,27 +93,6 @@ async function deleteStudent(req, res) {
 
     return res.json({
       message: "Student deleted successfully",
-      success: true,
-    });
-  } catch (error) {
-    return res.json({
-      message: new Error(error).message,
-      success: false,
-    });
-  }
-}
-
-// deleting a post
-async function findStudent(req, res) {
-  try {
-    let { db } = await connectToDatabase();
-
-    await db.collection("students").findOne({
-      email: new ObjectId(req.body),
-    });
-
-    return res.json({
-      message: "Student found successfully",
       success: true,
     });
   } catch (error) {

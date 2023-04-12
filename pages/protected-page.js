@@ -1,33 +1,26 @@
-import React from 'react';
-import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { getSession } from "next-auth/react";
+import React from "react";
 
-import Layout from '../components/layout';
-
-export default function ProtectedPage() {
-  const { user, error, isLoading } = useUser();
-
+function protectedpage() {
   return (
-    <Layout>
+    <div>
       <h1>Protected Page</h1>
-
-      {isLoading && <p>Loading profile...</p>}
-
-      {error && (
-        <>
-          <h4>Error</h4>
-          <pre>{error.message}</pre>
-        </>
-      )}
-
-      {user && (
-        <>
-          <h4>Profile</h4>
-          <pre>{JSON.stringify(user, null, 2)}</pre>
-        </>
-      )}
-
-    </Layout>
+    </div>
   );
 }
 
-export const getServerSideProps = withPageAuthRequired();
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (!session) {
+    context.res.writeHead(302, { Location: "/user-profile" });
+    context.res.end();
+    return {};
+  }
+  return {
+    props: {
+      user: session.user,
+    },
+  };
+}
+
+export default protectedpage;
