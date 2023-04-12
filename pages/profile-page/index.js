@@ -14,11 +14,11 @@ function ProfileP({ students }) {
 export default ProfileP;
 
 export async function getServerSideProps(ctx) {
-  const { DEV_URL } = process.env;
+  const { PROD_URL } = process.env;
   const emailURL = '/api/students?email=ellakillalea00@gmail.com';
   // console.log(emailURL);
 
-  const response = await fetch(DEV_URL + emailURL);
+  const response = await fetch(PROD_URL + emailURL);
   // console.log(response);
   
   const data = await response.json();
