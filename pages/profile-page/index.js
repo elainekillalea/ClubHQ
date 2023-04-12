@@ -13,7 +13,7 @@ function ProfileP({ students }) {
 
 export default ProfileP;
 
-export async function getStaticProps(ctx) {
+export async function getServerSideProps(ctx) {
   const { DEV_URL } = process.env;
   const emailURL = '/api/students?email=ellakillalea00@gmail.com';
   // console.log(emailURL);
