@@ -19,9 +19,9 @@ function StudentList({ students }) {
 export default StudentList;
 
 export async function getServerSideProps(ctx) {
-  const { DEV_URL } = process.env;
+  const { PROD_URL } = process.env;
 
-  const response = await fetch(DEV_URL + '/api/students');
+  const response = await fetch(PROD_URL + '/api/students');
   
   const data = await response.json();
   // console.log(data);

@@ -10,9 +10,9 @@ function Cal({attendance}) {
 export default Cal;
 
 export async function getServerSideProps(ctx) {
-  const { DEV_URL } = process.env;
+  const { PROD_URL } = process.env;
 
-  const response = await fetch(DEV_URL + '/api/attendance');
+  const response = await fetch(PROD_URL + '/api/attendance');
   
   const data = await response.json();
   // console.log(data);
