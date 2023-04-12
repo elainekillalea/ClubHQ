@@ -22,7 +22,7 @@ export async function getServerSideProps(ctx) {
   const { PROD_URL } = process.env;
 
   const response = await fetch(PROD_URL + '/api/students');
-  
+  console.log(PROD_URL + '/api/students')
   const data = await response.json();
   // console.log(data);
 
