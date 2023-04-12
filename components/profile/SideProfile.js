@@ -3,7 +3,7 @@ import styles from "./SideProfile.module.css";
 import Link from 'next/link'
 import { useSession, signIn, signOut } from "next-auth/react";
 
-export default function sideProfile({students}) {
+export default function SideProfile({students}) {
 
   const { data: session } = useSession();
    

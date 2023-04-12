@@ -19,7 +19,7 @@ export default function StudentL({ students }) {
             </thead>
             <tbody>
               {students.map((student, i) => (
-                <tr>
+                <tr key={i}>
                   <td>{student.name}</td>
                   <td>{student.grade}</td>
                   <td>{student.email}</td>
