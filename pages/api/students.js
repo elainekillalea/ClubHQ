@@ -8,8 +8,7 @@ export default async function handler(req, res) {
       if (req.query.email) {
         // console.log('get student')
         return getSingleStudent(req, res);
-      } 
-      else {
+      } else {
         // console.log('get students called')
         return getStudents(req, res);
       }
@@ -33,7 +32,9 @@ export default async function handler(req, res) {
 async function getSingleStudent(req, res) {
   try {
     let { db } = await connectToDatabase();
-    let student = await db.collection("students").findOne({ email: req.query.email });
+    let student = await db
+      .collection("students")
+      .findOne({ email: req.query.email });
     // console.log('1 ' + student)
     // console.log('2 ' + JSON.stringify(student))
     return res.json({

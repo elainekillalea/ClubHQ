@@ -56,14 +56,14 @@
 /* Sidebar/left column */
 .side {
   flex: 25%;
-  background-color: #c2bcc2;
+  background-color: #533663;
   padding: 20px;
 }
 
 /* Main column */
 .mainCol {
   flex: 75%;
-  background-color: #A79FA8;
+  background-color: #9d8fa3;
   padding: 20px;
   min-height: 750px;
 }

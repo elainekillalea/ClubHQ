@@ -3,6 +3,7 @@ import classes from "./StudentTable.module.css";
 import Card from "../ui/Card";
 
 export default function StudentL({ students }) {
+
   return (
     <div className={classes.content}>
       <Card>
@@ -30,6 +31,5 @@ export default function StudentL({ students }) {
         )}
       </Card>
     </div>
-    
   );
 }

@@ -5,8 +5,13 @@ const ObjectId = require("mongodb").ObjectId;
 export default async function handler(req, res) {
   switch (req.method) {
     case "GET": {
-      console.log('Get attendance');
-      return getAttendance(req, res);
+      if (req.query.studentIDs) {
+        console.log("get CA");
+        return getClassesAttended(req, res);
+      } else {
+        console.log("Get attendance");
+        return getAttendance(req, res);
+      }
     }
 
     case "POST": {
@@ -23,12 +28,35 @@ export default async function handler(req, res) {
   }
 }
 
+// Getting a single student
+async function getClassesAttended(req, res) {
+  try {
+    let { db } = await connectToDatabase();
+    console.log(req.query.studentIDs);
+    let classAttended = await db
+      .collection("attendance")
+      .find({ studentIDs: 1 })  // req.query.studentIDs
+      .toArray();
+    // console.log("CA: " + classAttended);
+    // console.log('CA2: ' + JSON.stringify(classAttended))
+    return res.json({
+      message: JSON.parse(JSON.stringify(classAttended)),
+      success: true,
+    });
+  } catch (error) {
+    return res.json({
+      message: new Error(error).message,
+      success: false,
+    });
+  }
+}
+
 // Getting all students.
 async function getAttendance(req, res) {
   try {
     let { db } = await connectToDatabase();
     let attendance = await db.collection("attendance").find({}).toArray();
-    console.log('Att db: ' + attendance);
+    console.log("Att db: " + attendance);
     return res.json({
       message: JSON.parse(JSON.stringify(attendance)),
       success: true,
@@ -41,7 +69,6 @@ async function getAttendance(req, res) {
   }
 }
 
-// Adding a new student
 async function addAttendance(req, res) {
   try {
     let { db } = await connectToDatabase();
@@ -58,7 +85,6 @@ async function addAttendance(req, res) {
   }
 }
 
-// Updating a post
 async function updateAttendance(req, res) {
   try {
     let { db } = await connectToDatabase();
@@ -82,7 +108,6 @@ async function updateAttendance(req, res) {
   }
 }
 
-// deleting a post
 async function deleteAttendance(req, res) {
   try {
     let { db } = await connectToDatabase();
