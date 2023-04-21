@@ -13,7 +13,7 @@ function NavBar() {
         <h1>ClubHQ</h1>
         <div style={{ borderRadius: '50%', overflow: 'hidden', width: '80px', height: '80px' }}>
           <Image
-            src="/crest2.png"
+            src="/clubhq_logo.png"
             objectFit="cover"
             width="80px"
             height="80px"
