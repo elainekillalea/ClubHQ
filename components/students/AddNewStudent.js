@@ -89,15 +89,35 @@ function AddNewStudent() {
           onChange={(e) => setBirthday(e.target.value)}
           value={birthday}
         />
-      </div>      <div className={styles.control}>
-        <label>Address</label>
+      </div>      
+      <div className={styles.control}>
+        <label>Address line 1</label>
         <input
           type="text"
-          name="address"
-          onChange={(e) => setAddress(e.target.value)}
-          value={address}
+          name="address1"
+          onChange={(e) => setAddress1(e.target.value)}
+          value={address1}
         />
-      </div>      <div className={styles.control}>
+      </div>
+      <div className={styles.control}>
+        <label>Address line 2</label>
+        <input
+          type="text"
+          name="address2"
+          onChange={(e) => setAddress2(e.target.value)}
+          value={address2}
+        />
+      </div> 
+      <div className={styles.control}>
+        <label>Address County</label>
+        <input
+          type="text"
+          name="address3"
+          onChange={(e) => setAddress3(e.target.value)}
+          value={address3}
+        />
+      </div>       
+      <div className={styles.control}>
         <label>Phone</label>
         <input
           type="text"
@@ -140,7 +160,8 @@ function AddNewStudent() {
           <option value="Brown">Brown</option>
           <option value="Black">Black</option>
         </select>
-      </div>      <div className={styles.control}>
+      </div>      
+      <div className={styles.control}>
         <label>Email*</label>
         <input
           type="email"
@@ -149,7 +170,8 @@ function AddNewStudent() {
           value={email}
           placeholder="example@gmail.com"
         />
-      </div>      <div className={styles.control}>
+      </div>      
+      <div className={styles.control}>
         <label>Student ID</label>
         <input
           type="number"

@@ -9,7 +9,7 @@
 /* Header/logo Title */
 .header {
   padding: 20px;
-  background: #201426;
+  background: #2a1a32; /*#201426;*/ 
   color: white;
   display: flex;
   justify-content: space-between;
@@ -56,7 +56,7 @@
 /* Sidebar/left column */
 .side {
   flex: 25%;
-  background-color: #533663;
+  background-color: #543564;
   padding: 20px;
 }
 

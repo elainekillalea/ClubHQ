@@ -37,6 +37,12 @@ async function getSingleStudent(req, res) {
       .findOne({ email: req.query.email });
     // console.log('1 ' + student)
     // console.log('2 ' + JSON.stringify(student))
+    // if (!student) {
+    //   return res.json({
+    //     message: { error: new Error(error).message },
+    //     success: false,
+    //   });
+    // }
     return res.json({
       message: JSON.parse(JSON.stringify(student)),
       success: true,
@@ -128,23 +134,3 @@ async function deleteStudent(req, res) {
   }
 }
 
-// deleting a post
-async function findStudent(req, res) {
-  try {
-    let { db } = await connectToDatabase();
-
-    await db.collection("students").findOne({
-      email: new ObjectId(req.body),
-    });
-
-    return res.json({
-      message: "Student found successfully",
-      success: true,
-    });
-  } catch (error) {
-    return res.json({
-      message: new Error(error).message,
-      success: false,
-    });
-  }
-}
