@@ -94,12 +94,12 @@ function AddNewStudent() {
         <label>Address line 1</label>
         <input
           type="text"
-          name="address1"
-          onChange={(e) => setAddress1(e.target.value)}
-          value={address1}
+          name="address"
+          onChange={(e) => setAddress(e.target.value)}
+          value={address}
         />
       </div>
-      <div className={styles.control}>
+      {/* <div className={styles.control}>
         <label>Address line 2</label>
         <input
           type="text"
@@ -116,7 +116,7 @@ function AddNewStudent() {
           onChange={(e) => setAddress3(e.target.value)}
           value={address3}
         />
-      </div>       
+      </div>        */}
       <div className={styles.control}>
         <label>Phone</label>
         <input

@@ -4,8 +4,8 @@ import Calendar from "react-calendar";
 import classes from "./Calendar.module.css";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
-import ReactTooltip from 'react-tooltip';
-import 'react-tooltip/dist/react-tooltip.css'
+import ReactTooltip from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 function CalendarP() {
@@ -16,11 +16,10 @@ function CalendarP() {
   const [user, setUser] = useState([]);
   const [sID, setSID] = useState("");
   const [attendance, setAttendance] = useState([]);
-  const currentUser = session.user?.email;
-  let emailURL = "/api/attendance?email=" + currentUser; //+ "ellakillalea00@gmail.com"; 
+  const currentUser = session?.user?.email;
+  let emailURL = "/api/attendance?email=" + currentUser; //+ "ellakillalea00@gmail.com";
   console.log(emailURL);
 
-  
   const dates = attendance.map((msg) => ({ date: msg.date, value: 1 }));
 
   useEffect(() => {
@@ -31,7 +30,7 @@ function CalendarP() {
       setSID(user.studentID);
     };
     fetchData();
-  }, [])
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,33 +41,47 @@ function CalendarP() {
       console.log("3: " + attendance);
     };
     fetchData();
-  }, [])
+  }, []);
 
   const handleClick = (value) => {
     if (!value || !value.date) {
       setDate("No record");
-    }
-    else{
+    } else {
       setDate("Class attended on " + value.date);
     }
-    
   };
 
   return (
     <div>
-      <div className={classes.container}>
-        <div className={classes.item}>
-          <h1>2023</h1>
-          <CalendarHeatmap
-            startDate={new Date("2023-01-01")}
-            endDate={new Date("2023-12-01")}
-            values={dates}
-            onClick={handleClick}
-          />
-        </div>
-      </div>
-      {data && (
-        <h2> {data} </h2>
+      {!session ? (
+        <>
+          <div className={classes.container}>
+            <div className={classes.item}>
+              <h1>2023</h1>
+              <CalendarHeatmap
+                startDate={new Date("2023-01-01")}
+                endDate={new Date("2023-12-01")}
+                values={[]}
+                onClick={handleClick}
+              />
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className={classes.container}>
+            <div className={classes.item}>
+              <h1>2023</h1>
+              <CalendarHeatmap
+                startDate={new Date("2023-01-01")}
+                endDate={new Date("2023-12-01")}
+                values={dates}
+                onClick={handleClick}
+              />
+            </div>
+          </div>
+          {data && <h2> {data} </h2>}
+        </>
       )}
     </div>
   );

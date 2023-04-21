@@ -20,7 +20,7 @@ function Profile({ userDetails }) {
   const [user, setUser] = useState([]);
   // const { PROD_URL, DEV_URL } = process.env;
   // const DEV_URL = process.env.DEV_URL;
-  const currentUser = session.user?.email;
+  const currentUser = session?.user?.email;
   let emailURL = "/api/students?email=" + currentUser;
   //+ session.user.email; //"orlakillalea@gmail.com";
   console.log(emailURL);
