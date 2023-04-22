@@ -3,3 +3,12 @@
   height: "auto";
   min-width: "100%";
 }
+
+.titleRow {
+  min-width: 30%;
+  text-align: left;
+}
+.nameCol {
+  min-width: 30%;
+  text-align: left;
+}

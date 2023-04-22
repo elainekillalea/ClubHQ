@@ -13,13 +13,13 @@ function NavBar() {
         <h1>ClubHQ</h1>
         <div style={{ borderRadius: '50%', overflow: 'hidden', width: '80px', height: '80px' }}>
           <Image
-            src="/clubhq_logo.png"
+            src="/clubhqLogo.png"
             objectFit="cover"
             width="80px"
             height="80px"
             placeholder="blur"
             alt="Logo"
-            blurDataURL="/crest2.png"
+            blurDataURL="/clubhqLogo.png"
           />
         </div>
       </div>

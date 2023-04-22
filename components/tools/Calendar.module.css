@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: row;
+  font-weight: bold;
 }
 
 .item {
@@ -13,6 +14,8 @@
 
 .attxt {
   padding: 15px;
+  font-size: 15px;
+  font-weight: lighter;
 }
 
 .react-calendar {

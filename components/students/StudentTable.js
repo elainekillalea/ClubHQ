@@ -12,7 +12,7 @@ export default function StudentL({ students }) {
         ) : (
           <table>
             <thead>
-              <tr>
+              <tr className={classes.titleRow}>
                 <th>Name</th>
                 <th>Grade</th>
                 <th>Email</th>
@@ -21,9 +21,9 @@ export default function StudentL({ students }) {
             <tbody>
               {students.map((student, i) => (
                 <tr key={i}>
-                  <td>{student.name}</td>
-                  <td>{student.grade}</td>
-                  <td>{student.email}</td>
+                  <td className={classes.nameCol}>{student.name}</td>
+                  <td className={classes.nameCol}>{student.grade}</td>
+                  <td className={classes.nameCol}>{student.email}</td>
                 </tr>
               ))}
             </tbody>

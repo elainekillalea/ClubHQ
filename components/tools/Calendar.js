@@ -11,14 +11,11 @@ import { useSession, signIn, signOut } from "next-auth/react";
 function CalendarP() {
   const { data: session } = useSession();
   const [data, setDate] = useState(null);
-  // console.log(dates);
-
   const [user, setUser] = useState([]);
   const [sID, setSID] = useState("");
   const [attendance, setAttendance] = useState([]);
   const currentUser = session?.user?.email;
   let emailURL = "/api/attendance?email=" + currentUser; //+ "ellakillalea00@gmail.com";
-  console.log(emailURL);
 
   const dates = attendance.map((msg) => ({ date: msg.date, value: 1 }));
 
@@ -36,9 +33,7 @@ function CalendarP() {
     const fetchData = async () => {
       const response = await fetch(emailURL);
       const resdata = await response.json();
-      console.log("2: " + JSON.stringify(resdata));
       setAttendance(resdata["message"]);
-      console.log("3: " + attendance);
     };
     fetchData();
   }, []);

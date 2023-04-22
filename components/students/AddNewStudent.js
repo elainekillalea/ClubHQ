@@ -6,7 +6,9 @@ import styles from "./AddNewStudent.module.css";
 function AddNewStudent() {
   const [name, setName] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [address, setAddress] = useState([]);
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [address3, setAddress3] = useState("");
   const [phone, setPhone] = useState("");
   const [eContact, setEContact] = useState("");
   const [dJoined, setDJoined] = useState("");
@@ -22,12 +24,22 @@ function AddNewStudent() {
     setError("");
     setMessage("");
 
-    if (!name || !eContact || !grade || !email) return setError("Some fields are required");
+    const isBrowser = () => typeof window !== "undefined";
+
+    function scrollToTop() {
+      if (!isBrowser()) return;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    if (!name || !eContact || !grade || !email) {
+      scrollToTop();
+      return setError("Some fields are required");
+    }
 
     let student = {
       name,
       birthday,
-      address,
+      address: [address1, address2, address3],
       phone,
       eContact,
       dJoined,
@@ -43,10 +55,14 @@ function AddNewStudent() {
 
     let data = await response.json();
 
+    scrollToTop();
+
     if (data.success) {
       setName("");
       setBirthday("");
-      setAddress("");
+      setAddress1("");
+      setAddress2("");
+      setAddress3("");
       setPhone("");
       setEContact("");
       setDJoined("");
@@ -89,17 +105,17 @@ function AddNewStudent() {
           onChange={(e) => setBirthday(e.target.value)}
           value={birthday}
         />
-      </div>      
+      </div>
       <div className={styles.control}>
         <label>Address line 1</label>
         <input
           type="text"
           name="address"
-          onChange={(e) => setAddress(e.target.value)}
-          value={address}
+          onChange={(e) => setAddress1(e.target.value)}
+          value={address1}
         />
       </div>
-      {/* <div className={styles.control}>
+      <div className={styles.control}>
         <label>Address line 2</label>
         <input
           type="text"
@@ -107,7 +123,7 @@ function AddNewStudent() {
           onChange={(e) => setAddress2(e.target.value)}
           value={address2}
         />
-      </div> 
+      </div>
       <div className={styles.control}>
         <label>Address County</label>
         <input
@@ -116,7 +132,7 @@ function AddNewStudent() {
           onChange={(e) => setAddress3(e.target.value)}
           value={address3}
         />
-      </div>        */}
+      </div>
       <div className={styles.control}>
         <label>Phone</label>
         <input
@@ -125,7 +141,7 @@ function AddNewStudent() {
           onChange={(e) => setPhone(e.target.value)}
           value={phone}
         />
-      </div>      
+      </div>
       <div className={styles.control}>
         <label>Emergency Contact*</label>
         <input
@@ -134,7 +150,7 @@ function AddNewStudent() {
           onChange={(e) => setEContact(e.target.value)}
           value={eContact}
         />
-      </div>      
+      </div>
       <div className={styles.control}>
         <label>Date Joined</label>
         <input
@@ -160,7 +176,7 @@ function AddNewStudent() {
           <option value="Brown">Brown</option>
           <option value="Black">Black</option>
         </select>
-      </div>      
+      </div>
       <div className={styles.control}>
         <label>Email*</label>
         <input
@@ -170,7 +186,7 @@ function AddNewStudent() {
           value={email}
           placeholder="example@gmail.com"
         />
-      </div>      
+      </div>
       <div className={styles.control}>
         <label>Student ID</label>
         <input

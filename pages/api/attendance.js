@@ -35,10 +35,8 @@ async function getClassesAttended(req, res) {
     console.log(req.query.studentIDs);
     let classAttended = await db
       .collection("attendance")
-      .find({ studentIDs: 1 })  // req.query.studentIDs
+      .find({ studentIDs: req.query.studentIDs })  // req.query.studentIDs
       .toArray();
-    // console.log("CA: " + classAttended);
-    // console.log('CA2: ' + JSON.stringify(classAttended))
     return res.json({
       message: JSON.parse(JSON.stringify(classAttended)),
       success: true,
