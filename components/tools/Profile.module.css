@@ -27,3 +27,15 @@
   font-weight: lighter;
   font-size: 15px;
 }
+
+.table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table td {
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -10,7 +10,7 @@ export default function StudentL({ students }) {
         {students.length === 0 ? (
           <h2>No added students</h2>
         ) : (
-          <table>
+          <table className={classes.table}>
             <thead>
               <tr className={classes.titleRow}>
                 <th>Name</th>
