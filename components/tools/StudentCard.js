@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
-
 import Card from '../ui/Card';
 import styles from './StudentCard.module.css';
 import { Collapse, Grid, Container, Row, Col } from "@nextui-org/react";

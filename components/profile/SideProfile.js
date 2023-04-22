@@ -17,11 +17,10 @@ export default function SideProfile({ students }) {
       ) : (
         <main className={styles.main}>
           <div className={styles.header}>
-            <h1>{session?.user?.name}</h1>
+            <h1>Signed in as</h1>
+            <br/>
+            <h2>{session?.user?.name}</h2>
           </div>
-          <br />
-          <Link href="/profile-page">View Profile</Link>
-          <br />
           <br />
           <p>
             <button onClick={() => signOut()}>Sign out</button>

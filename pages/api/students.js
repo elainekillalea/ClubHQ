@@ -35,14 +35,6 @@ async function getSingleStudent(req, res) {
     let student = await db
       .collection("students")
       .findOne({ email: req.query.email });
-    // console.log('1 ' + student)
-    // console.log('2 ' + JSON.stringify(student))
-    // if (!student) {
-    //   return res.json({
-    //     message: { error: new Error(error).message },
-    //     success: false,
-    //   });
-    // }
     return res.json({
       message: JSON.parse(JSON.stringify(student)),
       success: true,

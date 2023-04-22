@@ -2,16 +2,7 @@ import Calendar from "../../components/tools/Calendar";
 import { useSession, getSession } from "next-auth/react";
 import "react-calendar/dist/Calendar.css";
 
-function Cal({ attendance }) {
-  // const { data: session, status } = useSession()
-
-  // if (status === "loading") {
-  //   return <p>Loading...</p>
-  // }
-
-  // if (status === "unauthenticated") {
-  //   return <p>Login to view your calendar</p>
-  // }
+function Cal() {
   function addStudentHandler(enteredStudentData) {}
   return (
     <div>
