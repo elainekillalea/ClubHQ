@@ -8,10 +8,8 @@ function SideC(props) {
         <div className={classes.card}>
           <Profile />
         </div>
-        <div className={classes.card}>
-          <h3>Follow Me</h3>
-          <p>Some text..</p>
-        </div>
+        {/* <div className={classes.card}> */}
+        {/* </div> */}
       </div>
   );
 }

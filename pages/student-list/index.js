@@ -15,7 +15,6 @@ function StudentList({ students }) {
     return <p>Login to view members</p>;
   }
   
-
   return (
     <div className={classes.content}>
       <StudentL students={students} />

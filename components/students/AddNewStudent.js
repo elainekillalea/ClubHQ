@@ -8,7 +8,7 @@ function AddNewStudent() {
   const [birthday, setBirthday] = useState("");
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
-  const [address3, setAddress3] = useState("");
+  const [county, setCounty] = useState("");
   const [phone, setPhone] = useState("");
   const [eContact, setEContact] = useState("");
   const [dJoined, setDJoined] = useState("");
@@ -39,7 +39,7 @@ function AddNewStudent() {
     let student = {
       name,
       birthday,
-      address: [address1, address2, address3],
+      address: [address1, address2, county],
       phone,
       eContact,
       dJoined,
@@ -62,7 +62,7 @@ function AddNewStudent() {
       setBirthday("");
       setAddress1("");
       setAddress2("");
-      setAddress3("");
+      setCounty("");
       setPhone("");
       setEContact("");
       setDJoined("");
@@ -128,9 +128,9 @@ function AddNewStudent() {
         <label>Address County</label>
         <input
           type="text"
-          name="address3"
-          onChange={(e) => setAddress3(e.target.value)}
-          value={address3}
+          name="county"
+          onChange={(e) => setCounty(e.target.value)}
+          value={county}
         />
       </div>
       <div className={styles.control}>
