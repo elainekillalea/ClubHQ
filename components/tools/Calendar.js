@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
-import Calendar from "react-calendar";
-// import 'react-calendar/dist/Calendar.css';
 import classes from "./Calendar.module.css";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
-import ReactTooltip from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import { useSession, signIn, signOut } from "next-auth/react";
 
@@ -14,28 +11,36 @@ function CalendarP() {
   const [user, setUser] = useState([]);
   const [sID, setSID] = useState("");
   const [attendance, setAttendance] = useState([]);
+
   const currentUser = session?.user?.email;
-  let emailURL = "/api/attendance?email=" + currentUser; //+ "ellakillalea00@gmail.com";
+  let emailURL = "/api/students?email=" + currentUser;
+  let idURL = "/api/attendance?studentIDs=" + sID;
+
+  const d = new Date();
+  let year = d.getFullYear();
+  let yearstart = d.getFullYear() + "-01-01";
+  let yearend = d.getFullYear() + "-12-31";
 
   const dates = attendance.map((msg) => ({ date: msg.date, value: 1 }));
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(emailURL);
-      const resdata = await response.json();
-      setUser(resdata["message"]);
-      setSID(user.studentID);
-    };
-    fetchData();
-  }, []);
+  const fetchStud = async () => {
+    const response = await fetch(emailURL);
+    const resStud = await response.json();
+    setUser(resStud["message"]);
+    setSID(JSON.stringify(user.studentID));
+    console.log("ID: " + sID);
+  };
+
+  const fetchDates = async () => {
+    const response = await fetch(idURL);
+    const resDates = await response.json();
+    setAttendance(resDates["message"]);
+    console.log("Att: " + attendance);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(emailURL);
-      const resdata = await response.json();
-      setAttendance(resdata["message"]);
-    };
-    fetchData();
+    fetchStud();
+    fetchDates();
   }, []);
 
   const handleClick = (value) => {
@@ -52,10 +57,10 @@ function CalendarP() {
         <>
           <div className={classes.container}>
             <div className={classes.item}>
-              <h1>2023</h1>
+              <h1>Please sign in to view your calendar</h1>
               <CalendarHeatmap
-                startDate={new Date("2023-01-01")}
-                endDate={new Date("2023-12-01")}
+                startDate={new Date(yearstart)}
+                endDate={new Date(yearend)}
                 values={[]}
                 onClick={handleClick}
               />
@@ -66,10 +71,10 @@ function CalendarP() {
         <>
           <div className={classes.container}>
             <div className={classes.item}>
-              <h1>2023</h1>
+              <h1>{year}</h1>
               <CalendarHeatmap
-                startDate={new Date("2023-01-01")}
-                endDate={new Date("2023-12-01")}
+                startDate={new Date(yearstart)}
+                endDate={new Date(yearend)}
                 values={dates}
                 onClick={handleClick}
               />

@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import classes from "./Profile.module.css";
+import classes from "../tools/Profile.module.css";
+import { useRouter } from "next/router";
 import Card from "../ui/Card";
 import { useSession, signIn, signOut } from "next-auth/react";
 
-function Profile() {
+function Profile(m) {
+    console.log("MSG: " + m.email)
   const { data: session } = useSession();
-
   const [user, setUser] = useState([]);
-  const currentUser = session?.user?.email;
+  const currentUser = m.email;
   let emailURL = "/api/students?email=" + currentUser;
 
   useEffect(() => {
@@ -45,7 +46,8 @@ function Profile() {
             <tr>
               <td>Address:</td>
               <td>
-                {user.address?.address1}, {user.address?.address2}, {user.address?.county}
+                {user.address?.address1}, {user.address?.address2},{" "}
+                {user.address?.county}
               </td>
             </tr>
             <tr>
@@ -74,7 +76,7 @@ function Profile() {
             </tr>
           </table>
           <div>
-            <button>Edit</button>
+            <button >Edit</button>
           </div>
         </>
       )}

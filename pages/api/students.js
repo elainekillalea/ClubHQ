@@ -6,10 +6,10 @@ export default async function handler(req, res) {
   switch (req.method) {
     case "GET": {
       if (req.query.email) {
-        // console.log('get student')
+        console.log('get student')
         return getSingleStudent(req, res);
       } else {
-        // console.log('get students called')
+        console.log('get students called')
         return getStudents(req, res);
       }
     }
@@ -109,11 +109,10 @@ async function updateStudent(req, res) {
 async function deleteStudent(req, res) {
   try {
     let { db } = await connectToDatabase();
-
+    console.log("deleting");
     await db.collection("students").deleteOne({
-      _id: new ObjectId(req.body),
+      studentID: req.body.studentID,
     });
-
     return res.json({
       message: "Student deleted successfully",
       success: true,

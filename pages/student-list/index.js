@@ -15,7 +15,6 @@ function StudentList({ students }) {
     return <p>Login to view members</p>;
   }
   
-
   return (
     <div className={classes.content}>
       <StudentL students={students} />
@@ -40,4 +39,20 @@ export async function getServerSideProps(ctx) {
       students: data['message'],
     },
   };
+}
+
+const fetcher = async () => {
+  const response = await fetch(PROD_URL + '/api/students');
+  const data = await response.json();
+  return data
+}
+
+function HomePageSwr() {
+  const { data } = useSWR('/', () => fetcher())
+  const pageData = data
+  return (
+    <div className={classes.mainDiv}>
+      <HomePageSpecific pageData={pageData} />
+    </div>
+  )
 }

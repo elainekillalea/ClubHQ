@@ -5,6 +5,8 @@ const ObjectId = require("mongodb").ObjectId;
 export default async function handler(req, res) {
   switch (req.method) {
     case "GET": {
+      
+      console.log(req.query);
       if (req.query.studentIDs) {
         console.log("get CA");
         return getClassesAttended(req, res);
@@ -32,11 +34,12 @@ export default async function handler(req, res) {
 async function getClassesAttended(req, res) {
   try {
     let { db } = await connectToDatabase();
-    console.log(req.query.studentIDs);
+    console.log("res.id: " + req.query.studentIDs);
     let classAttended = await db
       .collection("attendance")
-      .find({ studentIDs: req.query.studentIDs })  // req.query.studentIDs
+      .find({ studentIDs: req.query.studentIDs })  
       .toArray();
+      console.log("gCA: " + JSON.stringify(classAttended));
     return res.json({
       message: JSON.parse(JSON.stringify(classAttended)),
       success: true,
@@ -54,7 +57,7 @@ async function getAttendance(req, res) {
   try {
     let { db } = await connectToDatabase();
     let attendance = await db.collection("attendance").find({}).toArray();
-    console.log("Att db: " + attendance);
+    // console.log("Att db: " + attendance);
     return res.json({
       message: JSON.parse(JSON.stringify(attendance)),
       success: true,
