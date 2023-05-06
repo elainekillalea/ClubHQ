@@ -14,7 +14,9 @@ function HomePage() {
   }
   return (
     <div className={styles.container}>
-      Click to sign into your user account <br />
+      <h1>Welcome to ClubHQ </h1>
+      <div className={styles.spacer}></div>
+      <p>Please sign into your user account </p>
       <button onClick={() => signIn()}>Sign in</button>
     </div>
   );

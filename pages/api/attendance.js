@@ -1,32 +1,20 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+/* 
+ *   https://www.section.io/engineering-education/build-nextjs-with-mongodb-and-deploy-on-vercel/
+ *   - Rose Waitherero
+ *   The tutorial above highly influenced the following code
+ */
+
 const { connectToDatabase } = require("../../lib/mongodb");
-const ObjectId = require("mongodb").ObjectId;
 
 export default async function handler(req, res) {
-  switch (req.method) {
-    case "GET": {
-      
-      console.log(req.query);
-      if (req.query.studentIDs) {
-        console.log("get CA");
-        return getClassesAttended(req, res);
-      } else {
-        console.log("Get attendance");
-        return getAttendance(req, res);
-      }
+  if (req.method === "GET") {
+    if (req.query.studentIDs) {
+      return getClassesAttended(req, res);
+    } else {
+      return getAttendance(req, res);
     }
-
-    case "POST": {
-      return addAttendance(req, res);
-    }
-
-    case "PUT": {
-      return updateAttendance(req, res);
-    }
-
-    case "DELETE": {
-      return deleteAttendance(req, res);
-    }
+  } else {
+    res.status(405).send({ message: "Method not allowed" });
   }
 }
 
@@ -37,9 +25,9 @@ async function getClassesAttended(req, res) {
     console.log("res.id: " + req.query.studentIDs);
     let classAttended = await db
       .collection("attendance")
-      .find({ studentIDs: req.query.studentIDs })  
+      .find({ studentIDs: req.query.studentIDs })
       .toArray();
-      console.log("gCA: " + JSON.stringify(classAttended));
+    console.log("gCA: " + JSON.stringify(classAttended));
     return res.json({
       message: JSON.parse(JSON.stringify(classAttended)),
       success: true,
@@ -57,68 +45,8 @@ async function getAttendance(req, res) {
   try {
     let { db } = await connectToDatabase();
     let attendance = await db.collection("attendance").find({}).toArray();
-    // console.log("Att db: " + attendance);
     return res.json({
       message: JSON.parse(JSON.stringify(attendance)),
-      success: true,
-    });
-  } catch (error) {
-    return res.json({
-      message: new Error(error).message,
-      success: false,
-    });
-  }
-}
-
-async function addAttendance(req, res) {
-  try {
-    let { db } = await connectToDatabase();
-    await db.collection("students").insertOne(JSON.parse(req.body));
-    return res.json({
-      message: "Student added successfully",
-      success: true,
-    });
-  } catch (error) {
-    return res.json({
-      message: new Error(error).message,
-      success: false,
-    });
-  }
-}
-
-async function updateAttendance(req, res) {
-  try {
-    let { db } = await connectToDatabase();
-
-    await db.collection("students").updateOne(
-      {
-        _id: new ObjectId(req.body),
-      },
-      { $set: { published: true } }
-    );
-
-    return res.json({
-      message: "Student updated successfully",
-      success: true,
-    });
-  } catch (error) {
-    return res.json({
-      message: new Error(error).message,
-      success: false,
-    });
-  }
-}
-
-async function deleteAttendance(req, res) {
-  try {
-    let { db } = await connectToDatabase();
-
-    await db.collection("students").deleteOne({
-      _id: new ObjectId(req.body),
-    });
-
-    return res.json({
-      message: "Student deleted successfully",
       success: true,
     });
   } catch (error) {

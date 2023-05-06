@@ -1,16 +1,14 @@
-import classes from './Layout.module.css';
-import Profile from '../profile/SideProfile';
+import classes from "./Layout.module.css";
+import Profile from "../tools/SideProfile";
+import { FaUser } from "react-icons/fa";
 
-function SideC(props) {
+function SideC() {
   return (
-      <div>
-        {/* <main className={classes.main}>{props.children}</main> */}
-        <div className={classes.card}>
-          <Profile />
-        </div>
-        {/* <div className={classes.card}> */}
-        {/* </div> */}
+    <div>
+      <div className={classes.card}>
+        <Profile />
       </div>
+    </div>
   );
 }
 

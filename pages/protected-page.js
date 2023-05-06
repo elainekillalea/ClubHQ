@@ -12,7 +12,7 @@ function protectedpage() {
 export async function getServerSideProps(context) {
   const session = await getSession(context);
   if (!session) {
-    context.res.writeHead(302, { Location: "/user-profile" });
+    context.res.writeHead(302, { Location: "/" });
     context.res.end();
     return {};
   }

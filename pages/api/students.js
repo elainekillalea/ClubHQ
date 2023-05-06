@@ -1,4 +1,8 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+/* 
+ *   https://www.section.io/engineering-education/build-nextjs-with-mongodb-and-deploy-on-vercel/
+ *   - Rose Waitherero
+ *   The tutorial above highly influenced the following code
+ */
 const { connectToDatabase } = require("../../lib/mongodb");
 const ObjectId = require("mongodb").ObjectId;
 
