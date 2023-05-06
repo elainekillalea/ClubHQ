@@ -4,11 +4,10 @@ import { useRouter } from "next/router";
 import Card from "../ui/Card";
 import { useSession, signIn, signOut } from "next-auth/react";
 
-function Profile(m) {
-    console.log("MSG: " + m.email)
+function Profile(msg) {
   const { data: session } = useSession();
   const [user, setUser] = useState([]);
-  const currentUser = m.email;
+  const currentUser = msg.email;
   let emailURL = "/api/students?email=" + currentUser;
 
   useEffect(() => {
@@ -19,7 +18,6 @@ function Profile(m) {
     };
     fetchData();
   }, []);
-  console.log("Profile: " + user);
   
   return ( 
     <div>

@@ -1,4 +1,3 @@
-import { CiEdit, CiRead, CiTrash } from "react-icons/ci";
 import classes from "./StudentTable.module.css";
 import Card from "../ui/Card";
 import { FaEye, FaTrash } from "react-icons/fa";
@@ -7,32 +6,25 @@ import { useRouter } from "next/router";
 import StudentProfile from "./StudentProfile";
 
 export default function StudentL({ students }) {
-  const [deleting, setDeleting] = useState(false);
   const [viewingStudent, setViewingStudent] = useState(null);
   const router = useRouter();
 
   const deleteStudent = async (studentId) => {
-    setDeleting(true);
-    try {
-      await fetch("/api/students", {
-        method: "DELETE",
-        body: studentId,
-      });
-      setDeleting(false);
-      return router.push(router.asPath);
-    } catch (error) {
-      return setDeleting(false);
-    }
+    await fetch("/api/students", {
+      method: "DELETE",
+      body: studentId,
+    });
+    return router.push(router.asPath);
   };
 
-const viewStudent = (student) => {
-  console.log("View");
-  if (viewingStudent !== student) {
-    setViewingStudent(student);
-  } else {
-    setViewingStudent(null);
-  }
-};
+  const viewStudent = (student) => {
+    console.log("View");
+    if (viewingStudent !== student) {
+      setViewingStudent(student);
+    } else {
+      setViewingStudent(null);
+    }
+  };
 
   return (
     <div className={classes.content}>

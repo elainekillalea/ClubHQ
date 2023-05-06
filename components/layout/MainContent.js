@@ -1,5 +1,4 @@
 import classes from './Layout.module.css';
-import Calendar from '../tools/Calendar';
 
 function MainC(props) {
   return (

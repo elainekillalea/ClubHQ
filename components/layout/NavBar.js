@@ -1,7 +1,7 @@
 import classes from './Layout.module.css';
 import Link from 'next/link'
 import Image from 'next/image';
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 
 function NavBar() {
@@ -11,7 +11,7 @@ function NavBar() {
       {/* Header */}
       <div className={classes.header}>
         <h1>ClubHQ</h1>
-        <div style={{ borderRadius: '50%', overflow: 'hidden', width: '80px', height: '80px' }}>
+        <div className={classes.imgdiv}>
           <Image
             src="/clubhqLogo.png"
             objectFit="cover"
@@ -31,7 +31,7 @@ function NavBar() {
           <Link href='/'>Home</Link>
         </div>
         </>
-      ) : session.user.email === 'ellakillalea00@gmail.com' ? (
+      ) : session.user.email === "ellakillalea00@gmail.com" ? (
         <div className={classes.navbar}>
           <Link href='/'>Home</Link>
           <Link href='/profile-page'>Profile</Link>
