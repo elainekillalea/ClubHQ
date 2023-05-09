@@ -6,6 +6,10 @@ import { useSession, signIn, signOut } from "next-auth/react";
 export default function SideProfile({ students }) {
   const { data: session } = useSession();
 
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: "/" });
+  };
+
   return (
     <div>
       {!session ? (
@@ -23,7 +27,7 @@ export default function SideProfile({ students }) {
           </div>
           <br />
           <p>
-            <button onClick={() => signOut()}>Sign out</button>
+            <button onClick={handleSignOut}>Sign out</button>
           </p>
         </main>
       )}

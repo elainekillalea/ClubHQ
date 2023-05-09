@@ -1,12 +1,11 @@
 import classes from "./Layout.module.css";
-import Profile from "../tools/SideProfile";
-import { FaUser } from "react-icons/fa";
+import SideProfile from "../tools/SideProfile";
 
 function SideC() {
   return (
     <div>
       <div className={classes.card}>
-        <Profile />
+        <SideProfile />
       </div>
     </div>
   );

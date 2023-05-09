@@ -1,13 +1,14 @@
 import classes from "./StudentTable.module.css";
 import Card from "../ui/Card";
 import { FaEye, FaTrash } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import StudentProfile from "./StudentProfile";
 
 export default function StudentL({ students }) {
   const [viewingStudent, setViewingStudent] = useState(null);
   const router = useRouter();
+  
 
   const deleteStudent = async (studentId) => {
     await fetch("/api/students", {
@@ -18,14 +19,19 @@ export default function StudentL({ students }) {
   };
 
   const viewStudent = (student) => {
-    console.log("View");
-    if (viewingStudent !== student) {
+    if (viewingStudent?.studentID !== student.studentID) {
       setViewingStudent(student);
     } else {
       setViewingStudent(null);
     }
+    console.log("Viewing:" + JSON.stringify(viewingStudent));
   };
 
+  useEffect(() => {
+    setViewingStudent(null);
+  }, [students]);
+
+  console.log("Viewing:" + viewingStudent);
   return (
     <div className={classes.content}>
       {students.length === 0 ? (

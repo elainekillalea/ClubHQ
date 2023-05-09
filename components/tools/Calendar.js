@@ -3,6 +3,7 @@ import classes from "./Calendar.module.css";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 import "react-tooltip/dist/react-tooltip.css";
+import Link from 'next/link'
 import { useSession, signIn, signOut } from "next-auth/react";
 
 function CalendarP() {
@@ -14,7 +15,6 @@ function CalendarP() {
 
   const currentUser = session?.user?.email;
   let emailURL = "/api/students?email=" + currentUser;
-  let idURL = "/api/attendance?studentIDs=" + sID;
 
   const d = new Date();
   let year = d.getFullYear();
@@ -27,21 +27,25 @@ function CalendarP() {
     const response = await fetch(emailURL);
     const resStud = await response.json();
     setUser(resStud["message"]);
-    setSID(JSON.stringify(user.studentID));
-    console.log("ID: " + sID);
+    setSID(resStud["message"].studentID);
   };
 
   const fetchDates = async () => {
+    let idURL = "/api/attendance?studentID=" + sID;
     const response = await fetch(idURL);
     const resDates = await response.json();
     setAttendance(resDates["message"]);
-    console.log("Att: " + attendance);
   };
 
   useEffect(() => {
     fetchStud();
-    fetchDates();
   }, []);
+
+  useEffect(() => {
+    if (sID) {
+      fetchDates();
+    }
+  }, [sID]);
 
   const handleClick = (value) => {
     if (!value || !value.date) {

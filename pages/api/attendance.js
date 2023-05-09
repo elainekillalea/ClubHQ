@@ -1,14 +1,14 @@
 /* 
  *   https://www.section.io/engineering-education/build-nextjs-with-mongodb-and-deploy-on-vercel/
  *   - Rose Waitherero
- *   The tutorial above highly influenced the following code
+ *   The tutorial above influenced the following code
  */
 
 const { connectToDatabase } = require("../../lib/mongodb");
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    if (req.query.studentIDs) {
+    if (req.query.studentID) {
       return getClassesAttended(req, res);
     } else {
       return getAttendance(req, res);
@@ -22,14 +22,12 @@ export default async function handler(req, res) {
 async function getClassesAttended(req, res) {
   try {
     let { db } = await connectToDatabase();
-    console.log("res.id: " + req.query.studentIDs);
     let classAttended = await db
       .collection("attendance")
-      .find({ studentIDs: req.query.studentIDs })
+      .find({ studentIDs: { $in: [parseInt(req.query.studentID)] } })
       .toArray();
-    console.log("gCA: " + JSON.stringify(classAttended));
     return res.json({
-      message: JSON.parse(JSON.stringify(classAttended)),
+      message: classAttended,
       success: true,
     });
   } catch (error) {

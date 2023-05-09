@@ -39,3 +39,19 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
+.form {
+  padding: 1rem;
+}
+
+.table input,
+.table select,
+.table textarea {
+  display: block;
+  font: inherit;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+  width: 100%;
+}
