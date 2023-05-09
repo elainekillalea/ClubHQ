@@ -1,5 +1,4 @@
 import NavBar from './NavBar';
-import MainContent from './MainContent';
 import SideContent from './SideContent';
 import Footer from './Footer';
 import classes from './Layout.module.css';
